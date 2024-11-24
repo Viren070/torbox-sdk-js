@@ -5,7 +5,7 @@ import { z } from 'zod';
  */
 export const getUpStatusOkResponse = z.lazy(() => {
   return z.object({
-    data: z.boolean().optional(),
+    data: z.any().optional().nullable(),
     detail: z.string().optional(),
     error: z.any().optional().nullable(),
     success: z.boolean().optional(),
@@ -15,7 +15,7 @@ export const getUpStatusOkResponse = z.lazy(() => {
 /**
  *
  * @typedef  {GetUpStatusOkResponse} getUpStatusOkResponse
- * @property {boolean}
+ * @property {any}
  * @property {string}
  * @property {any}
  * @property {boolean}
@@ -29,7 +29,7 @@ export type GetUpStatusOkResponse = z.infer<typeof getUpStatusOkResponse>;
 export const getUpStatusOkResponseResponse = z.lazy(() => {
   return z
     .object({
-      data: z.boolean().optional(),
+      data: z.any().optional().nullable(),
       detail: z.string().optional(),
       error: z.any().optional().nullable(),
       success: z.boolean().optional(),
@@ -49,7 +49,7 @@ export const getUpStatusOkResponseResponse = z.lazy(() => {
 export const getUpStatusOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.boolean().nullish(),
+      data: z.any().nullish(),
       detail: z.string().nullish(),
       error: z.any().nullish(),
       success: z.boolean().nullish(),

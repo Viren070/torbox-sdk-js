@@ -4,7 +4,7 @@
 
 | Name    | Type    | Required | Description |
 | :------ | :------ | :------- | :---------- |
-| data    | boolean | ❌       |             |
+| data    | any     | ❌       |             |
 | detail  | string  | ❌       |             |
 | error   | any     | ❌       |             |
 | success | boolean | ❌       |             |

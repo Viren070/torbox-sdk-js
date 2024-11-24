@@ -1,7 +1,7 @@
 {
   "name": "@torbox/torbox-api",
-  "version": "1.0.2",
-  "description": "You can read the full documentation at https://api-docs.torbox.app!",
+  "version": "1.0.0",
+  "description": "You can view the full documentation at https://api-docs.torbox.app.",
   "source": "./src/index.ts",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
