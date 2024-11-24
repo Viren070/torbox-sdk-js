@@ -12,6 +12,8 @@ export const getNotificationFeedOkResponse = z.lazy(() => {
   return z.object({
     data: z.array(getNotificationFeedOkResponseData).optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
+    success: z.boolean().optional(),
   });
 });
 
@@ -20,6 +22,8 @@ export const getNotificationFeedOkResponse = z.lazy(() => {
  * @typedef  {GetNotificationFeedOkResponse} getNotificationFeedOkResponse
  * @property {GetNotificationFeedOkResponseData[]}
  * @property {string}
+ * @property {any}
+ * @property {boolean}
  */
 export type GetNotificationFeedOkResponse = z.infer<typeof getNotificationFeedOkResponse>;
 
@@ -32,10 +36,14 @@ export const getNotificationFeedOkResponseResponse = z.lazy(() => {
     .object({
       data: z.array(getNotificationFeedOkResponseDataResponse).optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });
 
@@ -45,9 +53,16 @@ export const getNotificationFeedOkResponseResponse = z.lazy(() => {
  */
 export const getNotificationFeedOkResponseRequest = z.lazy(() => {
   return z
-    .object({ data: z.array(getNotificationFeedOkResponseDataRequest).nullish(), detail: z.string().nullish() })
+    .object({
+      data: z.array(getNotificationFeedOkResponseDataRequest).nullish(),
+      detail: z.string().nullish(),
+      error: z.any().nullish(),
+      success: z.boolean().nullish(),
+    })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });

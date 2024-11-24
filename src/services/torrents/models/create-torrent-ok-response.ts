@@ -12,6 +12,7 @@ export const createTorrentOkResponse = z.lazy(() => {
   return z.object({
     data: createTorrentOkResponseData.optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
     success: z.boolean().optional(),
   });
 });
@@ -21,6 +22,7 @@ export const createTorrentOkResponse = z.lazy(() => {
  * @typedef  {CreateTorrentOkResponse} createTorrentOkResponse
  * @property {CreateTorrentOkResponseData}
  * @property {string}
+ * @property {any}
  * @property {boolean}
  */
 export type CreateTorrentOkResponse = z.infer<typeof createTorrentOkResponse>;
@@ -34,11 +36,13 @@ export const createTorrentOkResponseResponse = z.lazy(() => {
     .object({
       data: createTorrentOkResponseDataResponse.optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
       success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });
@@ -52,11 +56,13 @@ export const createTorrentOkResponseRequest = z.lazy(() => {
     .object({
       data: createTorrentOkResponseDataRequest.nullish(),
       detail: z.string().nullish(),
+      error: z.any().nullish(),
       success: z.boolean().nullish(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });

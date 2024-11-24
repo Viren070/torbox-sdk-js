@@ -4,6 +4,7 @@ export interface RequestDownloadLinkParams {
   fileId?: string;
   zipLink?: string;
   torrentFile?: string;
+  userIp?: string;
 }
 
 export interface GetTorrentListParams {

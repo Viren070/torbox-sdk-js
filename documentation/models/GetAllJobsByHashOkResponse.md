@@ -6,6 +6,7 @@
 | :------ | :------------------------------- | :------- | :---------- |
 | data    | GetAllJobsByHashOkResponseData[] | ❌       |             |
 | detail  | string                           | ❌       |             |
+| error   | any                              | ❌       |             |
 | success | boolean                          | ❌       |             |
 
 # GetAllJobsByHashOkResponseData

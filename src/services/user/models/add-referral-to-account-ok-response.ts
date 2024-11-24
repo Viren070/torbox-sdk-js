@@ -7,6 +7,7 @@ export const addReferralToAccountOkResponse = z.lazy(() => {
   return z.object({
     data: z.any().optional().nullable(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
     success: z.boolean().optional(),
   });
 });
@@ -16,6 +17,7 @@ export const addReferralToAccountOkResponse = z.lazy(() => {
  * @typedef  {AddReferralToAccountOkResponse} addReferralToAccountOkResponse
  * @property {any}
  * @property {string}
+ * @property {any}
  * @property {boolean}
  */
 export type AddReferralToAccountOkResponse = z.infer<typeof addReferralToAccountOkResponse>;
@@ -29,11 +31,13 @@ export const addReferralToAccountOkResponseResponse = z.lazy(() => {
     .object({
       data: z.any().optional().nullable(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
       success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });
@@ -44,10 +48,16 @@ export const addReferralToAccountOkResponseResponse = z.lazy(() => {
  */
 export const addReferralToAccountOkResponseRequest = z.lazy(() => {
   return z
-    .object({ data: z.any().nullish(), detail: z.string().nullish(), success: z.boolean().nullish() })
+    .object({
+      data: z.any().nullish(),
+      detail: z.string().nullish(),
+      error: z.any().nullish(),
+      success: z.boolean().nullish(),
+    })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });

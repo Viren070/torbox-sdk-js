@@ -2,10 +2,12 @@
 
 **Properties**
 
-| Name   | Type                                         | Required | Description |
-| :----- | :------------------------------------------- | :------- | :---------- |
-| data   | SearchAllTorrentsFromScraperOkResponseData[] | ❌       |             |
-| detail | string                                       | ❌       |             |
+| Name    | Type                                         | Required | Description |
+| :------ | :------------------------------------------- | :------- | :---------- |
+| data    | SearchAllTorrentsFromScraperOkResponseData[] | ❌       |             |
+| detail  | string                                       | ❌       |             |
+| error   | any                                          | ❌       |             |
+| success | boolean                                      | ❌       |             |
 
 # SearchAllTorrentsFromScraperOkResponseData
 

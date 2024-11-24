@@ -12,6 +12,7 @@ export const createUsenetDownloadOkResponse = z.lazy(() => {
   return z.object({
     data: createUsenetDownloadOkResponseData.optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
     success: z.boolean().optional(),
   });
 });
@@ -21,6 +22,7 @@ export const createUsenetDownloadOkResponse = z.lazy(() => {
  * @typedef  {CreateUsenetDownloadOkResponse} createUsenetDownloadOkResponse
  * @property {CreateUsenetDownloadOkResponseData}
  * @property {string}
+ * @property {any}
  * @property {boolean}
  */
 export type CreateUsenetDownloadOkResponse = z.infer<typeof createUsenetDownloadOkResponse>;
@@ -34,11 +36,13 @@ export const createUsenetDownloadOkResponseResponse = z.lazy(() => {
     .object({
       data: createUsenetDownloadOkResponseDataResponse.optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
       success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });
@@ -52,11 +56,13 @@ export const createUsenetDownloadOkResponseRequest = z.lazy(() => {
     .object({
       data: createUsenetDownloadOkResponseDataRequest.nullish(),
       detail: z.string().nullish(),
+      error: z.any().nullish(),
       success: z.boolean().nullish(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });

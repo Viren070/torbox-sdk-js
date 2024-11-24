@@ -6,6 +6,7 @@
 | :------ | :------------------------ | :------- | :---------- |
 | data    | GetUserDataOkResponseData | ❌       |             |
 | detail  | string                    | ❌       |             |
+| error   | any                       | ❌       |             |
 | success | boolean                   | ❌       |             |
 
 # GetUserDataOkResponseData

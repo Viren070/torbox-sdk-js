@@ -12,6 +12,7 @@ export const getUserDataOkResponse = z.lazy(() => {
   return z.object({
     data: getUserDataOkResponseData.optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
     success: z.boolean().optional(),
   });
 });
@@ -21,6 +22,7 @@ export const getUserDataOkResponse = z.lazy(() => {
  * @typedef  {GetUserDataOkResponse} getUserDataOkResponse
  * @property {GetUserDataOkResponseData}
  * @property {string}
+ * @property {any}
  * @property {boolean}
  */
 export type GetUserDataOkResponse = z.infer<typeof getUserDataOkResponse>;
@@ -34,11 +36,13 @@ export const getUserDataOkResponseResponse = z.lazy(() => {
     .object({
       data: getUserDataOkResponseDataResponse.optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
       success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });
@@ -52,11 +56,13 @@ export const getUserDataOkResponseRequest = z.lazy(() => {
     .object({
       data: getUserDataOkResponseDataRequest.nullish(),
       detail: z.string().nullish(),
+      error: z.any().nullish(),
       success: z.boolean().nullish(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });

@@ -123,6 +123,7 @@ Requires an API key as a parameter for the `token` parameter.
  * @param {string} [fileId] - The files's ID that you want to download
  * @param {string} [zipLink] - If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given.
  * @param {string} [torrentFile] - If you want a .torrent file to be downloaded. Does not work with the zip_link option. Optional.
+ * @param {string} [userIp] - The user's IP to determine the closest CDN. Optional.
  * @returns {Promise<HttpResponse<any>>} 
  */
   async requestDownloadLink2(
@@ -165,6 +166,10 @@ Requires an API key as a parameter for the `token` parameter.
       .addQueryParam({
         key: 'torrent_file',
         value: params?.torrentFile,
+      })
+      .addQueryParam({
+        key: 'user_ip',
+        value: params?.userIp,
       })
       .build();
     return this.client.call<undefined>(request);

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "torbox-api": "file:../",
+    "@torbox/torbox-api": "file:../",
     "zod": "3.22.0"
   },
   "scripts": {

@@ -7,6 +7,7 @@ export const controlQueuedTorrentOkResponse = z.lazy(() => {
   return z.object({
     data: z.any().optional().nullable(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
     success: z.boolean().optional(),
   });
 });
@@ -16,6 +17,7 @@ export const controlQueuedTorrentOkResponse = z.lazy(() => {
  * @typedef  {ControlQueuedTorrentOkResponse} controlQueuedTorrentOkResponse
  * @property {any}
  * @property {string}
+ * @property {any}
  * @property {boolean}
  */
 export type ControlQueuedTorrentOkResponse = z.infer<typeof controlQueuedTorrentOkResponse>;
@@ -29,11 +31,13 @@ export const controlQueuedTorrentOkResponseResponse = z.lazy(() => {
     .object({
       data: z.any().optional().nullable(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
       success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });
@@ -44,10 +48,16 @@ export const controlQueuedTorrentOkResponseResponse = z.lazy(() => {
  */
 export const controlQueuedTorrentOkResponseRequest = z.lazy(() => {
   return z
-    .object({ data: z.any().nullish(), detail: z.string().nullish(), success: z.boolean().nullish() })
+    .object({
+      data: z.any().nullish(),
+      detail: z.string().nullish(),
+      error: z.any().nullish(),
+      success: z.boolean().nullish(),
+    })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });

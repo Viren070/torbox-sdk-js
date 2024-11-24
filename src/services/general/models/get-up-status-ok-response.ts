@@ -5,14 +5,20 @@ import { z } from 'zod';
  */
 export const getUpStatusOkResponse = z.lazy(() => {
   return z.object({
+    data: z.boolean().optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
+    success: z.boolean().optional(),
   });
 });
 
 /**
  *
  * @typedef  {GetUpStatusOkResponse} getUpStatusOkResponse
+ * @property {boolean}
  * @property {string}
+ * @property {any}
+ * @property {boolean}
  */
 export type GetUpStatusOkResponse = z.infer<typeof getUpStatusOkResponse>;
 
@@ -23,10 +29,16 @@ export type GetUpStatusOkResponse = z.infer<typeof getUpStatusOkResponse>;
 export const getUpStatusOkResponseResponse = z.lazy(() => {
   return z
     .object({
+      data: z.boolean().optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
+      data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });
 
@@ -35,7 +47,17 @@ export const getUpStatusOkResponseResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const getUpStatusOkResponseRequest = z.lazy(() => {
-  return z.object({ detail: z.string().nullish() }).transform((data) => ({
-    detail: data['detail'],
-  }));
+  return z
+    .object({
+      data: z.boolean().nullish(),
+      detail: z.string().nullish(),
+      error: z.any().nullish(),
+      success: z.boolean().nullish(),
+    })
+    .transform((data) => ({
+      data: data['data'],
+      detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
+    }));
 });

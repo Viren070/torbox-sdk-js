@@ -6,6 +6,7 @@
 | :------ | :----------------------------- | :------- | :---------- |
 | data    | GetTorrentListOkResponseData[] | ❌       |             |
 | detail  | string                         | ❌       |             |
+| error   | any                            | ❌       |             |
 | success | boolean                        | ❌       |             |
 
 # GetTorrentListOkResponseData

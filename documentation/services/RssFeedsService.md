@@ -25,7 +25,7 @@ A list of all methods in the `RssFeedsService` service. Click on the method name
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -57,7 +57,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -89,7 +89,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({

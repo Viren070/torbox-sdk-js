@@ -12,6 +12,8 @@ export const getStatsOkResponse = z.lazy(() => {
   return z.object({
     data: getStatsOkResponseData.optional(),
     detail: z.string().optional(),
+    error: z.boolean().optional(),
+    success: z.boolean().optional(),
   });
 });
 
@@ -20,6 +22,8 @@ export const getStatsOkResponse = z.lazy(() => {
  * @typedef  {GetStatsOkResponse} getStatsOkResponse
  * @property {GetStatsOkResponseData}
  * @property {string}
+ * @property {boolean}
+ * @property {boolean}
  */
 export type GetStatsOkResponse = z.infer<typeof getStatsOkResponse>;
 
@@ -32,10 +36,14 @@ export const getStatsOkResponseResponse = z.lazy(() => {
     .object({
       data: getStatsOkResponseDataResponse.optional(),
       detail: z.string().optional(),
+      error: z.boolean().optional(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });
 
@@ -45,9 +53,16 @@ export const getStatsOkResponseResponse = z.lazy(() => {
  */
 export const getStatsOkResponseRequest = z.lazy(() => {
   return z
-    .object({ data: getStatsOkResponseDataRequest.nullish(), detail: z.string().nullish() })
+    .object({
+      data: getStatsOkResponseDataRequest.nullish(),
+      detail: z.string().nullish(),
+      error: z.boolean().nullish(),
+      success: z.boolean().nullish(),
+    })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });

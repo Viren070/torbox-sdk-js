@@ -36,7 +36,7 @@ A list of all methods in the `TorrentsService` service. Click on the method name
 **Example Usage Code Snippet**
 
 ```typescript
-import { CreateTorrentRequest, TorboxApi } from 'torbox-api';
+import { CreateTorrentRequest, TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -75,7 +75,7 @@ import { CreateTorrentRequest, TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -111,7 +111,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -143,6 +143,7 @@ import { TorboxApi } from 'torbox-api';
 | fileId      | string | ❌       | The files's ID that you want to download                                                         |
 | zipLink     | string | ❌       | If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given. |
 | torrentFile | string | ❌       | If you want a .torrent file to be downloaded. Does not work with the zip_link option. Optional.  |
+| userIp      | string | ❌       | The user's IP to determine the closest CDN. Optional.                                            |
 
 **Return Type**
 
@@ -151,7 +152,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -164,6 +165,7 @@ import { TorboxApi } from 'torbox-api';
     fileId: '{{torrent_file_id}}',
     zipLink: 'boolean',
     torrentFile: 'boolean',
+    userIp: 'string',
   });
 
   console.log(data);
@@ -194,7 +196,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -235,7 +237,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -273,7 +275,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -310,7 +312,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -348,7 +350,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -380,7 +382,7 @@ import { TorboxApi } from 'torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({

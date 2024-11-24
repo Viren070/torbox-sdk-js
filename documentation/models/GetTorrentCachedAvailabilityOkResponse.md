@@ -6,6 +6,7 @@
 | :------ | :----------------------------------------- | :------- | :---------- |
 | data    | GetTorrentCachedAvailabilityOkResponseData | ❌       |             |
 | detail  | string                                     | ❌       |             |
+| error   | string                                     | ❌       |             |
 | success | boolean                                    | ❌       |             |
 
 # GetTorrentCachedAvailabilityOkResponseData

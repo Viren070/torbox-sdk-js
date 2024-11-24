@@ -12,6 +12,7 @@ export const getTorrentCachedAvailabilityOkResponse = z.lazy(() => {
   return z.object({
     data: getTorrentCachedAvailabilityOkResponseData.optional().nullable(),
     detail: z.string().optional(),
+    error: z.string().optional().nullable(),
     success: z.boolean().optional(),
   });
 });
@@ -20,6 +21,7 @@ export const getTorrentCachedAvailabilityOkResponse = z.lazy(() => {
  *
  * @typedef  {GetTorrentCachedAvailabilityOkResponse} getTorrentCachedAvailabilityOkResponse
  * @property {GetTorrentCachedAvailabilityOkResponseData}
+ * @property {string}
  * @property {string}
  * @property {boolean}
  */
@@ -34,11 +36,13 @@ export const getTorrentCachedAvailabilityOkResponseResponse = z.lazy(() => {
     .object({
       data: getTorrentCachedAvailabilityOkResponseDataResponse.optional().nullable(),
       detail: z.string().optional(),
+      error: z.string().optional().nullable(),
       success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });
@@ -52,11 +56,13 @@ export const getTorrentCachedAvailabilityOkResponseRequest = z.lazy(() => {
     .object({
       data: getTorrentCachedAvailabilityOkResponseDataRequest.nullish(),
       detail: z.string().nullish(),
+      error: z.string().nullish(),
       success: z.boolean().nullish(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });

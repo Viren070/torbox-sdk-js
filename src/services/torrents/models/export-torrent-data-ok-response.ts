@@ -7,6 +7,8 @@ export const exportTorrentDataOkResponse = z.lazy(() => {
   return z.object({
     data: z.string().optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
+    success: z.boolean().optional(),
   });
 });
 
@@ -15,6 +17,8 @@ export const exportTorrentDataOkResponse = z.lazy(() => {
  * @typedef  {ExportTorrentDataOkResponse} exportTorrentDataOkResponse
  * @property {string}
  * @property {string}
+ * @property {any}
+ * @property {boolean}
  */
 export type ExportTorrentDataOkResponse = z.infer<typeof exportTorrentDataOkResponse>;
 
@@ -27,10 +31,14 @@ export const exportTorrentDataOkResponseResponse = z.lazy(() => {
     .object({
       data: z.string().optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });
 
@@ -39,8 +47,17 @@ export const exportTorrentDataOkResponseResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const exportTorrentDataOkResponseRequest = z.lazy(() => {
-  return z.object({ data: z.string().nullish(), detail: z.string().nullish() }).transform((data) => ({
-    data: data['data'],
-    detail: data['detail'],
-  }));
+  return z
+    .object({
+      data: z.string().nullish(),
+      detail: z.string().nullish(),
+      error: z.any().nullish(),
+      success: z.boolean().nullish(),
+    })
+    .transform((data) => ({
+      data: data['data'],
+      detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
+    }));
 });

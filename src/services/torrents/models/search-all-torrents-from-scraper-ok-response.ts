@@ -12,6 +12,8 @@ export const searchAllTorrentsFromScraperOkResponse = z.lazy(() => {
   return z.object({
     data: z.array(searchAllTorrentsFromScraperOkResponseData).optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
+    success: z.boolean().optional(),
   });
 });
 
@@ -20,6 +22,8 @@ export const searchAllTorrentsFromScraperOkResponse = z.lazy(() => {
  * @typedef  {SearchAllTorrentsFromScraperOkResponse} searchAllTorrentsFromScraperOkResponse
  * @property {SearchAllTorrentsFromScraperOkResponseData[]}
  * @property {string}
+ * @property {any}
+ * @property {boolean}
  */
 export type SearchAllTorrentsFromScraperOkResponse = z.infer<typeof searchAllTorrentsFromScraperOkResponse>;
 
@@ -32,10 +36,14 @@ export const searchAllTorrentsFromScraperOkResponseResponse = z.lazy(() => {
     .object({
       data: z.array(searchAllTorrentsFromScraperOkResponseDataResponse).optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });
 
@@ -48,9 +56,13 @@ export const searchAllTorrentsFromScraperOkResponseRequest = z.lazy(() => {
     .object({
       data: z.array(searchAllTorrentsFromScraperOkResponseDataRequest).nullish(),
       detail: z.string().nullish(),
+      error: z.any().nullish(),
+      success: z.boolean().nullish(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });

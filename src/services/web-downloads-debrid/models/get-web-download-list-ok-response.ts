@@ -12,6 +12,8 @@ export const getWebDownloadListOkResponse = z.lazy(() => {
   return z.object({
     data: z.array(getWebDownloadListOkResponseData).optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
+    success: z.boolean().optional(),
   });
 });
 
@@ -20,6 +22,8 @@ export const getWebDownloadListOkResponse = z.lazy(() => {
  * @typedef  {GetWebDownloadListOkResponse} getWebDownloadListOkResponse
  * @property {GetWebDownloadListOkResponseData[]}
  * @property {string}
+ * @property {any}
+ * @property {boolean}
  */
 export type GetWebDownloadListOkResponse = z.infer<typeof getWebDownloadListOkResponse>;
 
@@ -32,10 +36,14 @@ export const getWebDownloadListOkResponseResponse = z.lazy(() => {
     .object({
       data: z.array(getWebDownloadListOkResponseDataResponse).optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });
 
@@ -45,9 +53,16 @@ export const getWebDownloadListOkResponseResponse = z.lazy(() => {
  */
 export const getWebDownloadListOkResponseRequest = z.lazy(() => {
   return z
-    .object({ data: z.array(getWebDownloadListOkResponseDataRequest).nullish(), detail: z.string().nullish() })
+    .object({
+      data: z.array(getWebDownloadListOkResponseDataRequest).nullish(),
+      detail: z.string().nullish(),
+      error: z.any().nullish(),
+      success: z.boolean().nullish(),
+    })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
+      success: data['success'],
     }));
 });

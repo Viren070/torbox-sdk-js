@@ -2,10 +2,12 @@
 
 **Properties**
 
-| Name   | Type                                | Required | Description |
-| :----- | :---------------------------------- | :------- | :---------- |
-| data   | GetNotificationFeedOkResponseData[] | ❌       |             |
-| detail | string                              | ❌       |             |
+| Name    | Type                                | Required | Description |
+| :------ | :---------------------------------- | :------- | :---------- |
+| data    | GetNotificationFeedOkResponseData[] | ❌       |             |
+| detail  | string                              | ❌       |             |
+| error   | any                                 | ❌       |             |
+| success | boolean                             | ❌       |             |
 
 # GetNotificationFeedOkResponseData
 

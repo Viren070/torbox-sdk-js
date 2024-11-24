@@ -12,6 +12,7 @@ export const getAllJobsByHashOkResponse = z.lazy(() => {
   return z.object({
     data: z.array(getAllJobsByHashOkResponseData).optional(),
     detail: z.string().optional(),
+    error: z.any().optional().nullable(),
     success: z.boolean().optional(),
   });
 });
@@ -21,6 +22,7 @@ export const getAllJobsByHashOkResponse = z.lazy(() => {
  * @typedef  {GetAllJobsByHashOkResponse} getAllJobsByHashOkResponse
  * @property {GetAllJobsByHashOkResponseData[]}
  * @property {string}
+ * @property {any}
  * @property {boolean}
  */
 export type GetAllJobsByHashOkResponse = z.infer<typeof getAllJobsByHashOkResponse>;
@@ -34,11 +36,13 @@ export const getAllJobsByHashOkResponseResponse = z.lazy(() => {
     .object({
       data: z.array(getAllJobsByHashOkResponseDataResponse).optional(),
       detail: z.string().optional(),
+      error: z.any().optional().nullable(),
       success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });
@@ -52,11 +56,13 @@ export const getAllJobsByHashOkResponseRequest = z.lazy(() => {
     .object({
       data: z.array(getAllJobsByHashOkResponseDataRequest).nullish(),
       detail: z.string().nullish(),
+      error: z.any().nullish(),
       success: z.boolean().nullish(),
     })
     .transform((data) => ({
       data: data['data'],
       detail: data['detail'],
+      error: data['error'],
       success: data['success'],
     }));
 });

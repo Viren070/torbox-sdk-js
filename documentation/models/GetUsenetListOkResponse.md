@@ -6,6 +6,7 @@
 | :------ | :---------------------------- | :------- | :---------- |
 | data    | GetUsenetListOkResponseData[] | ❌       |             |
 | detail  | string                        | ❌       |             |
+| error   | any                           | ❌       |             |
 | success | boolean                       | ❌       |             |
 
 # GetUsenetListOkResponseData

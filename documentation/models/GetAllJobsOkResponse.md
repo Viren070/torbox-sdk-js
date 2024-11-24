@@ -6,6 +6,7 @@
 | :------ | :------------------------- | :------- | :---------- |
 | data    | GetAllJobsOkResponseData[] | ❌       |             |
 | detail  | string                     | ❌       |             |
+| error   | any                        | ❌       |             |
 | success | boolean                    | ❌       |             |
 
 # GetAllJobsOkResponseData

@@ -100,39 +100,6 @@ Requires an API key using the Authorization Bearer Header.
 
   /**
  * ### Overview
-Queues a job to upload the specified file or zip to the Dropbox account sent with the `dropbox_token` key. To get this key, either get an OAuth2 token using `/oauth/dropbox` or your own solution. Make sure when creating the OAuth link you use the scopes `files.content.write` _(used for uploading to the user's account)_ and `sharing.write` _(used for creating the link)._
-
-### Authorization
-
-Requires an API key using the Authorization Bearer Header.
- * @param {string} apiVersion - 
- * @returns {Promise<HttpResponse<any>>} 
- */
-  async queueDropbox(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
-      .setBaseUrl(this.config)
-      .setConfig(this.config)
-      .setMethod('POST')
-      .setPath('/{api_version}/api/integration/dropbox')
-      .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
-      .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
-      .setRetryAttempts(this.config, requestConfig)
-      .setRetryDelayMs(this.config, requestConfig)
-      .setResponseValidation(this.config, requestConfig)
-      .addPathParam({
-        key: 'api_version',
-        value: apiVersion,
-      })
-      .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
-      .addBody(body)
-      .build();
-    return this.client.call<undefined>(request);
-  }
-
-  /**
- * ### Overview
 Queues a job to upload the specified file or zip to the OneDrive sent with the `onedrive_token` key. To get this key, either get an OAuth2 token using `/oauth/onedrive` or your own solution. Make sure when creating the OAuth link you use the scope `files.readwrite.all`. This is compatible with all different types of Microsoft accounts.
 
 ### Authorization
