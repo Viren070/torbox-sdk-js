@@ -12,11 +12,6 @@ export type { CreateTorrentOkResponseData } from './create-torrent-ok-response-d
 export type { GetTorrentListOkResponseData } from './get-torrent-list-ok-response-data';
 export type { DataFiles1 } from './data-files-1';
 export type { GetTorrentCachedAvailabilityOkResponseData } from './get-torrent-cached-availability-ok-response-data';
-export type { Data1 } from './data-1';
-export type { Data2 } from './data-2';
-export type { Data1Files } from './data-1-files';
-export type { Xxxxxxxxxxxxxxxxxx } from './xxxxxxxxxxxxxxxxxx';
-export type { Xxxxxxxxxxxxxxxxxxx } from './xxxxxxxxxxxxxxxxxxx';
 export type { SearchAllTorrentsFromScraperOkResponseData } from './search-all-torrents-from-scraper-ok-response-data';
 export type { GetTorrentInfoOkResponseData } from './get-torrent-info-ok-response-data';
 export type { DataFiles2 } from './data-files-2';

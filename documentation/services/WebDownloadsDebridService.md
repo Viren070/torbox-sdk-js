@@ -31,7 +31,7 @@ A list of all methods in the `WebDownloadsDebridService` service. Click on the m
 **Example Usage Code Snippet**
 
 ```typescript
-import { CreateWebDownloadRequest, TorboxApi } from '@torbox/torbox-api';
+import { CreateWebDownloadRequest, TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -67,7 +67,7 @@ import { CreateWebDownloadRequest, TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -107,7 +107,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -151,7 +151,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -187,7 +187,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({

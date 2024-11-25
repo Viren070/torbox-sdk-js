@@ -31,7 +31,7 @@ A list of all methods in the `UsenetService` service. Click on the method name t
 **Example Usage Code Snippet**
 
 ```typescript
-import { CreateUsenetDownloadRequest, TorboxApi } from '@torbox/torbox-api';
+import { CreateUsenetDownloadRequest, TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -66,7 +66,7 @@ import { CreateUsenetDownloadRequest, TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -103,7 +103,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -147,7 +147,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -183,7 +183,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({

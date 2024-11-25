@@ -10,7 +10,7 @@ import {
  */
 export const getTorrentCachedAvailabilityOkResponse = z.lazy(() => {
   return z.object({
-    data: getTorrentCachedAvailabilityOkResponseData.optional().nullable(),
+    data: z.any().optional(),
     detail: z.string().optional(),
     error: z.string().optional().nullable(),
     success: z.boolean().optional(),
@@ -20,7 +20,7 @@ export const getTorrentCachedAvailabilityOkResponse = z.lazy(() => {
 /**
  *
  * @typedef  {GetTorrentCachedAvailabilityOkResponse} getTorrentCachedAvailabilityOkResponse
- * @property {GetTorrentCachedAvailabilityOkResponseData}
+ * @property {any}
  * @property {string}
  * @property {string}
  * @property {boolean}
@@ -34,7 +34,7 @@ export type GetTorrentCachedAvailabilityOkResponse = z.infer<typeof getTorrentCa
 export const getTorrentCachedAvailabilityOkResponseResponse = z.lazy(() => {
   return z
     .object({
-      data: getTorrentCachedAvailabilityOkResponseDataResponse.optional().nullable(),
+      data: z.any().optional(),
       detail: z.string().optional(),
       error: z.string().optional().nullable(),
       success: z.boolean().optional(),
@@ -54,7 +54,7 @@ export const getTorrentCachedAvailabilityOkResponseResponse = z.lazy(() => {
 export const getTorrentCachedAvailabilityOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: getTorrentCachedAvailabilityOkResponseDataRequest.nullish(),
+      data: z.any().nullish(),
       detail: z.string().nullish(),
       error: z.string().nullish(),
       success: z.boolean().nullish(),

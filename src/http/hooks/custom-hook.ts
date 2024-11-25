@@ -1,4 +1,3 @@
-import { HttpMetadata } from '../types';
 import { Hook } from './hook';
 import { HttpRequest, HttpResponse } from './hook';
 import { HttpError } from '../error';

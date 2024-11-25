@@ -24,7 +24,7 @@ This SDK is compatible with the following versions: `TypeScript >= 4.8.4`
 To get started with the SDK, we recommend installing using `pnpm`:
 
 ```bash
-pnpm install torbox-api
+pnpm install @torbox/torbox-api
 ```
 
 ## Authentication
@@ -64,7 +64,7 @@ const torboxApi = new TorboxApi({ timeout: 10000 });
 Below is a comprehensive example demonstrating how to authenticate and call a simple endpoint:
 
 ```ts
-import { TorboxApi } from 'torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({

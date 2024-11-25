@@ -1,20 +1,22 @@
 import { z } from 'zod';
-import { data1, data1Request, data1Response } from './data-1';
-import { data2, data2Request, data2Response } from './data-2';
 
 /**
  * The shape of the model inside the application code - what the users use
  */
 export const getTorrentCachedAvailabilityOkResponseData = z.lazy(() => {
-  return z.union([z.array(data1), data2, z.any()]);
+  return z.object({
+    name: z.string().optional(),
+    size: z.number().optional(),
+    hash: z.string().optional(),
+  });
 });
 
 /**
  *
  * @typedef  {GetTorrentCachedAvailabilityOkResponseData} getTorrentCachedAvailabilityOkResponseData
- * @property {Data1[]}
- * @property {Data2}
- * @property {any}
+ * @property {string}
+ * @property {number}
+ * @property {string}
  */
 export type GetTorrentCachedAvailabilityOkResponseData = z.infer<typeof getTorrentCachedAvailabilityOkResponseData>;
 
@@ -23,7 +25,17 @@ export type GetTorrentCachedAvailabilityOkResponseData = z.infer<typeof getTorre
  * Is equal to application shape if all property names match the api schema
  */
 export const getTorrentCachedAvailabilityOkResponseDataResponse = z.lazy(() => {
-  return z.union([z.array(data1), data2Response, z.any()]);
+  return z
+    .object({
+      name: z.string().optional(),
+      size: z.number().optional(),
+      hash: z.string().optional(),
+    })
+    .transform((data) => ({
+      name: data['name'],
+      size: data['size'],
+      hash: data['hash'],
+    }));
 });
 
 /**
@@ -31,5 +43,11 @@ export const getTorrentCachedAvailabilityOkResponseDataResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const getTorrentCachedAvailabilityOkResponseDataRequest = z.lazy(() => {
-  return z.union([z.array(data1), data2Request, z.any()]);
+  return z
+    .object({ name: z.string().nullish(), size: z.number().nullish(), hash: z.string().nullish() })
+    .transform((data) => ({
+      name: data['name'],
+      size: data['size'],
+      hash: data['hash'],
+    }));
 });

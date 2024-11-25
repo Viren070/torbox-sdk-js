@@ -36,7 +36,7 @@ A list of all methods in the `TorrentsService` service. Click on the method name
 **Example Usage Code Snippet**
 
 ```typescript
-import { CreateTorrentRequest, TorboxApi } from '@torbox/torbox-api';
+import { CreateTorrentRequest, TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -75,7 +75,7 @@ import { CreateTorrentRequest, TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -111,7 +111,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -152,7 +152,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -196,7 +196,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -237,7 +237,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -275,7 +275,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -312,7 +312,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -350,7 +350,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
@@ -382,7 +382,7 @@ import { TorboxApi } from '@torbox/torbox-api';
 **Example Usage Code Snippet**
 
 ```typescript
-import { TorboxApi } from '@torbox/torbox-api';
+import { TorboxApi } from '@torbox/@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({
