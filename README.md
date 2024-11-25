@@ -10,7 +10,7 @@
       - [Setting the Access Token](#setting-the-access-token)
   - [Setting a Custom Timeout](#setting-a-custom-timeout)
 - [Sample Usage](#sample-usage)
-  - [Documentaion](#documentaion)
+  - [Documentation](#documentation)
   - [Models](#models)
 
 # Setup & Configuration
@@ -76,7 +76,7 @@ import { TorboxApi } from 'torbox-api';
 })();
 ```
 
-## Documentaion
+## Documentation
 
 The SDK provides various services to interact with the API.
 
