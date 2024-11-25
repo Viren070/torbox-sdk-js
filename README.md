@@ -1,11 +1,7 @@
-# TorBox Api TypeScript SDK
-
-Welcome to the TorboxApi SDK documentation. This guide will help you get started with integrating and using the TorboxApi SDK in your project.
+![Logo](https://raw.githubusercontent.com/TorBox-App/torbox-sdk-js/main/assets/banner.png)
 
 ## Table of Contents
 
-- [TorBox Api TypeScript SDK](#torbox-api-typescript-sdk)
-  - [Table of Contents](#table-of-contents)
 - [Setup \& Configuration](#setup--configuration)
   - [Supported Language Versions](#supported-language-versions)
   - [Installation](#installation)
