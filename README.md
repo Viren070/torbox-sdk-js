@@ -40,7 +40,7 @@ This token must be provided to authenticate your requests to the API.
 When you initialize the SDK, you can set the access token as follows as well as a few more variables:
 
 ```ts
-const sdk = new TorboxApi({ token: 'YOUR_TOKEN' });
+const sdk = new TorboxApi({ token: 'YOUR_TOKEN', baseUrl: 'https://api.torbox.app' });
 ```
 
 If you need to set or update the access token after initializing the SDK, you can use:
@@ -48,6 +48,7 @@ If you need to set or update the access token after initializing the SDK, you ca
 ```ts
 const sdk = new TorboxApi();
 sdk.token = 'YOUR_TOKEN';
+sdk.baseUrl = 'https://api.torbox.app';
 ```
 
 ## Setting a Custom Timeout
@@ -68,6 +69,7 @@ import { TorboxApi } from 'torbox-api';
 (async () => {
   const torboxApi = new TorboxApi({
     token: 'YOUR_TOKEN',
+    baseUrl: 'https://api.torbox.app';
   });
 
   const { data } = await torboxApi.general.getUpStatus();
