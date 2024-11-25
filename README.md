@@ -1,24 +1,21 @@
-# TorboxApi TypeScript SDK 1.0.0
+# TorBox Api TypeScript SDK
 
 Welcome to the TorboxApi SDK documentation. This guide will help you get started with integrating and using the TorboxApi SDK in your project.
 
-## Versions
-
-- API version: `1.0.0`
-- SDK version: `1.0.0`
-
 ## Table of Contents
 
-- [Setup & Configuration](#setup--configuration)
+- [TorBox Api TypeScript SDK](#torbox-api-typescript-sdk)
+  - [Table of Contents](#table-of-contents)
+- [Setup \& Configuration](#setup--configuration)
   - [Supported Language Versions](#supported-language-versions)
   - [Installation](#installation)
-- [Authentication](#authentication)
-  - [Access Token Authentication](#access-token-authentication)
-- [Setting a Custom Timeout](#setting-a-custom-timeout)
+  - [Authentication](#authentication)
+    - [Access Token Authentication](#access-token-authentication)
+      - [Setting the Access Token](#setting-the-access-token)
+  - [Setting a Custom Timeout](#setting-a-custom-timeout)
 - [Sample Usage](#sample-usage)
-- [Services](#services)
-- [Models](#models)
-- [License](#license)
+  - [Documentaion](#documentaion)
+  - [Models](#models)
 
 # Setup & Configuration
 
@@ -47,7 +44,7 @@ This token must be provided to authenticate your requests to the API.
 When you initialize the SDK, you can set the access token as follows as well as a few more variables:
 
 ```ts
-const sdk = new TorboxApi({ token: 'YOUR_TOKEN', baseUrl: 'https://api.torbox.app', api_version: 'v1' });
+const sdk = new TorboxApi({ token: 'YOUR_TOKEN' });
 ```
 
 If you need to set or update the access token after initializing the SDK, you can use:
@@ -55,8 +52,6 @@ If you need to set or update the access token after initializing the SDK, you ca
 ```ts
 const sdk = new TorboxApi();
 sdk.token = 'YOUR_TOKEN';
-sdk.baseUrl = 'https://api.torbox.app'
-sdk.api_version = 'v1'
 ```
 
 ## Setting a Custom Timeout
@@ -77,8 +72,6 @@ import { TorboxApi } from 'torbox-api';
 (async () => {
   const torboxApi = new TorboxApi({
     token: 'YOUR_TOKEN',
-    baseUrl: 'https://api.torbox.app',
-    api_version: 'v1'
   });
 
   const { data } = await torboxApi.general.getUpStatus();
@@ -87,7 +80,7 @@ import { TorboxApi } from 'torbox-api';
 })();
 ```
 
-## Services
+## Documentaion
 
 The SDK provides various services to interact with the API.
 
@@ -141,9 +134,3 @@ The SDK includes several models that represent the data structures used in API r
 | [GetAllJobsByHashOkResponse](documentation/models/GetAllJobsByHashOkResponse.md)                         |             |
 
 </details>
-
-## License
-
-This SDK is licensed under the MIT License.
-
-See the [LICENSE](LICENSE) file for more details.
