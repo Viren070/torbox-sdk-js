@@ -45,15 +45,18 @@ Requires an API key using the Authorization Bearer Header.
     body: CreateUsenetDownloadRequest,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<CreateUsenetDownloadOkResponse>> {
-    const request = new RequestBuilder<CreateUsenetDownloadOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/usenet/createusenetdownload')
       .setRequestSchema(createUsenetDownloadRequestRequest)
-      .setResponseSchema(createUsenetDownloadOkResponseResponse)
       .setRequestContentType(ContentType.MultipartFormData)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: createUsenetDownloadOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -90,16 +93,19 @@ Requires an API key using the Authorization Bearer Header.
     apiVersion: string,
     body: any,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/usenet/controlusenetdownload')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -110,7 +116,7 @@ Requires an API key using the Authorization Bearer Header.
       .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
       .addBody(body)
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -133,16 +139,19 @@ Requires an API key as a parameter for the `token` parameter.
     apiVersion: string,
     params?: RequestDownloadLink1Params,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/usenet/requestdl')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -175,7 +184,7 @@ Requires an API key as a parameter for the `token` parameter.
         value: params?.userIp,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -197,15 +206,18 @@ Requires an API key using the Authorization Bearer Header.
     params?: GetUsenetListParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetUsenetListOkResponse>> {
-    const request = new RequestBuilder<GetUsenetListOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/usenet/mylist')
       .setRequestSchema(z.any())
-      .setResponseSchema(getUsenetListOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getUsenetListOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -257,16 +269,19 @@ Requires an API key using the Authorization Bearer Header.
     apiVersion: string,
     params?: GetUsenetCachedAvailabilityParams,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/usenet/checkcached')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -283,6 +298,6 @@ Requires an API key using the Authorization Bearer Header.
         value: params?.format,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 }

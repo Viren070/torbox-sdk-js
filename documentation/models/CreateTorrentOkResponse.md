@@ -16,8 +16,8 @@
 | Name                   | Type   | Required | Description |
 | :--------------------- | :----- | :------- | :---------- |
 | activeLimit            | number | ❌       |             |
+| authId                 | string | ❌       |             |
 | currentActiveDownloads | number | ❌       |             |
 | hash                   | string | ❌       |             |
-| name                   | string | ❌       |             |
 | queuedId               | number | ❌       |             |
 | torrentId              | number | ❌       |             |

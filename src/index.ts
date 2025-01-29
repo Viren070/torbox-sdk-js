@@ -8,6 +8,7 @@ import { NotificationsService } from './services/notifications';
 import { UserService } from './services/user';
 import { RssFeedsService } from './services/rss-feeds';
 import { IntegrationsService } from './services/integrations';
+import { QueuedService } from './services/queued';
 
 export * from './services/torrents';
 export * from './services/usenet';
@@ -17,6 +18,7 @@ export * from './services/notifications';
 export * from './services/user';
 export * from './services/rss-feeds';
 export * from './services/integrations';
+export * from './services/queued';
 
 export type * from './http';
 
@@ -36,6 +38,8 @@ export class TorboxApi {
   public readonly rssFeeds: RssFeedsService;
 
   public readonly integrations: IntegrationsService;
+
+  public readonly queued: QueuedService;
 
   constructor(public config: SdkConfig) {
     const baseUrl = config.environment || config.baseUrl || Environment.DEFAULT;
@@ -58,6 +62,8 @@ export class TorboxApi {
     this.rssFeeds = new RssFeedsService(this.config);
 
     this.integrations = new IntegrationsService(this.config);
+
+    this.queued = new QueuedService(this.config);
   }
 
   set baseUrl(baseUrl: string) {
@@ -69,6 +75,7 @@ export class TorboxApi {
     this.user.baseUrl = baseUrl;
     this.rssFeeds.baseUrl = baseUrl;
     this.integrations.baseUrl = baseUrl;
+    this.queued.baseUrl = baseUrl;
   }
 
   set environment(environment: Environment) {
@@ -80,6 +87,7 @@ export class TorboxApi {
     this.user.baseUrl = environment;
     this.rssFeeds.baseUrl = environment;
     this.integrations.baseUrl = environment;
+    this.queued.baseUrl = environment;
   }
 
   set timeoutMs(timeoutMs: number) {
@@ -91,6 +99,7 @@ export class TorboxApi {
     this.user.timeoutMs = timeoutMs;
     this.rssFeeds.timeoutMs = timeoutMs;
     this.integrations.timeoutMs = timeoutMs;
+    this.queued.timeoutMs = timeoutMs;
   }
 
   set token(token: string) {
@@ -102,6 +111,7 @@ export class TorboxApi {
     this.user.token = token;
     this.rssFeeds.token = token;
     this.integrations.token = token;
+    this.queued.token = token;
   }
 }
 

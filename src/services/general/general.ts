@@ -17,15 +17,18 @@ None needed.
  * @returns {Promise<HttpResponse<GetUpStatusOkResponse>>} Get Up Status Success
  */
   async getUpStatus(requestConfig?: RequestConfig): Promise<HttpResponse<GetUpStatusOkResponse>> {
-    const request = new RequestBuilder<GetUpStatusOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/')
       .setRequestSchema(z.any())
-      .setResponseSchema(getUpStatusOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getUpStatusOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -44,15 +47,18 @@ None needed.
  * @returns {Promise<HttpResponse<GetStatsOkResponse>>} Get Stats Success
  */
   async getStats(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<GetStatsOkResponse>> {
-    const request = new RequestBuilder<GetStatsOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/stats')
       .setRequestSchema(z.any())
-      .setResponseSchema(getStatsOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getStatsOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)

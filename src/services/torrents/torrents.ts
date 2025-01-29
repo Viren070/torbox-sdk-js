@@ -7,10 +7,6 @@ import { CreateTorrentRequest, createTorrentRequestRequest } from './models/crea
 import { CreateTorrentOkResponse, createTorrentOkResponseResponse } from './models/create-torrent-ok-response';
 import { ControlTorrentOkResponse, controlTorrentOkResponseResponse } from './models/control-torrent-ok-response';
 import {
-  ControlQueuedTorrentOkResponse,
-  controlQueuedTorrentOkResponseResponse,
-} from './models/control-queued-torrent-ok-response';
-import {
   RequestDownloadLinkOkResponse,
   requestDownloadLinkOkResponseResponse,
 } from './models/request-download-link-ok-response';
@@ -20,17 +16,12 @@ import {
   GetTorrentInfoParams,
   GetTorrentListParams,
   RequestDownloadLinkParams,
-  SearchAllTorrentsFromScraperParams,
 } from './request-params';
 import { GetTorrentListOkResponse, getTorrentListOkResponseResponse } from './models/get-torrent-list-ok-response';
 import {
   GetTorrentCachedAvailabilityOkResponse,
   getTorrentCachedAvailabilityOkResponseResponse,
 } from './models/get-torrent-cached-availability-ok-response';
-import {
-  SearchAllTorrentsFromScraperOkResponse,
-  searchAllTorrentsFromScraperOkResponseResponse,
-} from './models/search-all-torrents-from-scraper-ok-response';
 import {
   ExportTorrentDataOkResponse,
   exportTorrentDataOkResponseResponse,
@@ -54,15 +45,18 @@ Requires an API key using the Authorization Bearer Header.
     body: CreateTorrentRequest,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<CreateTorrentOkResponse>> {
-    const request = new RequestBuilder<CreateTorrentOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/torrents/createtorrent')
       .setRequestSchema(createTorrentRequestRequest)
-      .setResponseSchema(createTorrentOkResponseResponse)
       .setRequestContentType(ContentType.MultipartFormData)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: createTorrentOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -100,15 +94,18 @@ Requires an API key using the Authorization Bearer Header.
     body: any,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ControlTorrentOkResponse>> {
-    const request = new RequestBuilder<ControlTorrentOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/torrents/controltorrent')
       .setRequestSchema(z.any())
-      .setResponseSchema(controlTorrentOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: controlTorrentOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -120,48 +117,6 @@ Requires an API key using the Authorization Bearer Header.
       .addBody(body)
       .build();
     return this.client.call<ControlTorrentOkResponse>(request);
-  }
-
-  /**
- * ### Overview
-Controls a queued torrent. By sending the queued torrent's ID and the type of operation you want to perform, it will perform that action on the queued torrent.
-
-Operations are either:
-
-- **Delete** `deletes the queued torrent from your account`
-    
-
-### Authorization
-
-Requires an API key using the Authorization Bearer Header.
- * @param {string} apiVersion - 
- * @returns {Promise<HttpResponse<ControlQueuedTorrentOkResponse>>} Control Torrent Success
- */
-  async controlQueuedTorrent(
-    apiVersion: string,
-    body: any,
-    requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<ControlQueuedTorrentOkResponse>> {
-    const request = new RequestBuilder<ControlQueuedTorrentOkResponse>()
-      .setBaseUrl(this.config)
-      .setConfig(this.config)
-      .setMethod('POST')
-      .setPath('/{api_version}/api/torrents/controlqueued')
-      .setRequestSchema(z.any())
-      .setResponseSchema(controlQueuedTorrentOkResponseResponse)
-      .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
-      .setRetryAttempts(this.config, requestConfig)
-      .setRetryDelayMs(this.config, requestConfig)
-      .setResponseValidation(this.config, requestConfig)
-      .addPathParam({
-        key: 'api_version',
-        value: apiVersion,
-      })
-      .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
-      .addBody(body)
-      .build();
-    return this.client.call<ControlQueuedTorrentOkResponse>(request);
   }
 
   /**
@@ -185,15 +140,18 @@ Requires an API key as a parameter for the `token` parameter.
     params?: RequestDownloadLinkParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<RequestDownloadLinkOkResponse>> {
-    const request = new RequestBuilder<RequestDownloadLinkOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/torrents/requestdl')
       .setRequestSchema(z.any())
-      .setResponseSchema(requestDownloadLinkOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: requestDownloadLinkOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -260,7 +218,6 @@ Requires an API key using the Authorization Bearer Header.
  * @param {string} apiVersion - 
  * @param {string} [bypassCache] - Allows you to bypass the cached data, and always get fresh information. Useful if constantly querying for fresh download stats. Otherwise, we request that you save our database a few calls.
  * @param {string} [id] - Determines the torrent requested, will return an object rather than list. Optional.
-
  * @param {string} [offset] - Determines the offset of items to get from the database. Default is 0. Optional.
  * @param {string} [limit] - Determines the number of items to recieve per request. Default is 1000. Optional.
  * @returns {Promise<HttpResponse<GetTorrentListOkResponse>>} Get Torrent List Success
@@ -270,15 +227,18 @@ Requires an API key using the Authorization Bearer Header.
     params?: GetTorrentListParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetTorrentListOkResponse>> {
-    const request = new RequestBuilder<GetTorrentListOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/torrents/mylist')
       .setRequestSchema(z.any())
-      .setResponseSchema(getTorrentListOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getTorrentListOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -330,15 +290,18 @@ Requires an API key using the Authorization Bearer Header.
     params?: GetTorrentCachedAvailabilityParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetTorrentCachedAvailabilityOkResponse>> {
-    const request = new RequestBuilder<GetTorrentCachedAvailabilityOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/torrents/checkcached')
       .setRequestSchema(z.any())
-      .setResponseSchema(getTorrentCachedAvailabilityOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getTorrentCachedAvailabilityOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -364,48 +327,6 @@ Requires an API key using the Authorization Bearer Header.
 
   /**
  * ### Overview
-Uses Meilisearch to search for scraped torrents. This is a basic torrent aggregator system and has no real relation to TorBox. It is simply a tool you can use. It does not have cache information, or anything special like that, and will not have any of that information. This is simply a torrent search, nothing more.  
-  
-You may use this for anything. TorBox uses it in the website to make it easy for users to find torrents without having to go and find them on sketchy websites.
-
-### Authorization
-
-None required.
- * @param {string} apiVersion - 
- * @param {string} [query] - The query you want to search for.
- * @returns {Promise<HttpResponse<SearchAllTorrentsFromScraperOkResponse>>} Search All Torrents From Scraper Success
- */
-  async searchAllTorrentsFromScraper(
-    apiVersion: string,
-    params?: SearchAllTorrentsFromScraperParams,
-    requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<SearchAllTorrentsFromScraperOkResponse>> {
-    const request = new RequestBuilder<SearchAllTorrentsFromScraperOkResponse>()
-      .setBaseUrl(this.config)
-      .setConfig(this.config)
-      .setMethod('GET')
-      .setPath('/{api_version}/api/torrents/search')
-      .setRequestSchema(z.any())
-      .setResponseSchema(searchAllTorrentsFromScraperOkResponseResponse)
-      .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
-      .setRetryAttempts(this.config, requestConfig)
-      .setRetryDelayMs(this.config, requestConfig)
-      .setResponseValidation(this.config, requestConfig)
-      .addPathParam({
-        key: 'api_version',
-        value: apiVersion,
-      })
-      .addQueryParam({
-        key: 'query',
-        value: params?.query,
-      })
-      .build();
-    return this.client.call<SearchAllTorrentsFromScraperOkResponse>(request);
-  }
-
-  /**
- * ### Overview
 Exports the magnet or torrent file. Requires a type to be passed. If type is **magnet**, it will return a JSON response with the magnet as a string in the _data_ key. If type is **file**, it will return a bittorrent file as a download. Not compatible with cached downloads.
 
 ### Authorization
@@ -421,15 +342,18 @@ Requires an API key using the Authorization Bearer Header.
     params?: ExportTorrentDataParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ExportTorrentDataOkResponse>> {
-    const request = new RequestBuilder<ExportTorrentDataOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/torrents/exportdata')
       .setRequestSchema(z.any())
-      .setResponseSchema(exportTorrentDataOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: exportTorrentDataOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -466,15 +390,18 @@ None required.
     params?: GetTorrentInfoParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetTorrentInfoOkResponse>> {
-    const request = new RequestBuilder<GetTorrentInfoOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/torrents/torrentinfo')
       .setRequestSchema(z.any())
-      .setResponseSchema(getTorrentInfoOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getTorrentInfoOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -492,36 +419,5 @@ None required.
       })
       .build();
     return this.client.call<GetTorrentInfoOkResponse>(request);
-  }
-
-  /**
- * ### Overview
-Retrieves all of a user's queued torrents.
-
-### Authorization
-
-Requires an API key using the Authorization Bearer Header.
- * @param {string} apiVersion - 
- * @returns {Promise<HttpResponse<any>>} 
- */
-  async getQueuedTorrents(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
-      .setBaseUrl(this.config)
-      .setConfig(this.config)
-      .setMethod('GET')
-      .setPath('/{api_version}/api/torrents/getqueued')
-      .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
-      .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
-      .setRetryAttempts(this.config, requestConfig)
-      .setRetryDelayMs(this.config, requestConfig)
-      .setResponseValidation(this.config, requestConfig)
-      .addPathParam({
-        key: 'api_version',
-        value: apiVersion,
-      })
-      .build();
-    return this.client.call<undefined>(request);
   }
 }

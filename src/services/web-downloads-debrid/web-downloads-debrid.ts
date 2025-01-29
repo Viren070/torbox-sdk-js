@@ -18,6 +18,7 @@ import {
   GetWebDownloadListOkResponse,
   getWebDownloadListOkResponseResponse,
 } from './models/get-web-download-list-ok-response';
+import { GetHosterListOkResponse, getHosterListOkResponseResponse } from './models/get-hoster-list-ok-response';
 
 export class WebDownloadsDebridService extends BaseService {
   /**
@@ -35,15 +36,18 @@ Requires an API key using the Authorization Bearer Header.
     body: CreateWebDownloadRequest,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<CreateWebDownloadOkResponse>> {
-    const request = new RequestBuilder<CreateWebDownloadOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/webdl/createwebdownload')
       .setRequestSchema(createWebDownloadRequestRequest)
-      .setResponseSchema(createWebDownloadOkResponseResponse)
       .setRequestContentType(ContentType.MultipartFormData)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: createWebDownloadOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -79,16 +83,19 @@ Requires an API key using the Authorization Bearer Header.
     body: any,
     params?: ControlWebDownloadParams,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/webdl/controlwebdownload')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -107,7 +114,7 @@ Requires an API key using the Authorization Bearer Header.
       .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
       .addBody(body)
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -130,16 +137,19 @@ Requires an API key as a parameter for the `token` parameter.
     apiVersion: string,
     params?: RequestDownloadLink2Params,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/webdl/requestdl')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -172,7 +182,7 @@ Requires an API key as a parameter for the `token` parameter.
         value: params?.userIp,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -194,15 +204,18 @@ Requires an API key using the Authorization Bearer Header.
     params?: GetWebDownloadListParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetWebDownloadListOkResponse>> {
-    const request = new RequestBuilder<GetWebDownloadListOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/webdl/mylist')
       .setRequestSchema(z.any())
-      .setResponseSchema(getWebDownloadListOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getWebDownloadListOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -255,16 +268,19 @@ Requires an API key using the Authorization Bearer Header.
     apiVersion: string,
     params?: GetWebDownloadCachedAvailabilityParams,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/webdl/checkcached')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -281,6 +297,66 @@ Requires an API key using the Authorization Bearer Header.
         value: params?.format,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
+  }
+
+  /**
+ * ### Overview
+A dynamic list of hosters that TorBox is capable of downloading through its paid service.
+
+- Name - a clean name for display use, the well known name of the service, should be recognizable to users.
+    
+- Domains - an array of known domains that the hoster uses. While each may serve a different purpose it is still included.
+    
+- URL - the main url of the service. This should take you to the home page or a service page of the hoster.
+    
+- Icon - a square image, usually a favicon or logo, that represents the service, should be recognizable as the hoster's icon.
+    
+- Status - whether this hoster can be used on TorBox or not at the current time. It is usually a good idea to check this value before submitting a download to TorBox's servers for download.
+    
+- Type - values are either "hoster" or "stream". Both do the same thing, but is good to differentiate services used for different things.
+    
+- Note - a string value (or null) that may give helpful information about the current status or state of a hoster. This can and should be shown to end users.
+    
+- Daily Link Limit - the number of downloads a user can use per day. As a user submits links, once they hit this number, the API will deny them from adding anymore of this type of link. A zero value means that it is unlimited.
+    
+- Daily Link Used - the number of downloads a user has already used. This endpoint currently doesn't update this value.
+    
+- Daily Bandwidth Limit - the value in bytes that a user is allowed to download from this hoster. A zero value means that it is unlimited. This endpoint doesn't currently implement this limit. It is recommended to use the Daily Link Limit instead.
+    
+- Daily Bandwdith Used - the value in btes that a user has already used to download from this hoster. This endpoint currently doesn't update this value.
+    
+
+### Authorization
+
+Requires an API key using the Authorization Bearer Header.
+ * @param {string} apiVersion - 
+ * @returns {Promise<HttpResponse<GetHosterListOkResponse>>} Get Hoster List Success
+ */
+  async getHosterList(
+    apiVersion: string,
+    requestConfig?: RequestConfig,
+  ): Promise<HttpResponse<GetHosterListOkResponse>> {
+    const request = new RequestBuilder()
+      .setBaseUrl(this.config)
+      .setConfig(this.config)
+      .setMethod('GET')
+      .setPath('/{api_version}/api/webdl/hosters')
+      .setRequestSchema(z.any())
+      .setRequestContentType(ContentType.Json)
+      .addResponse({
+        schema: getHosterListOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
+      .setRetryAttempts(this.config, requestConfig)
+      .setRetryDelayMs(this.config, requestConfig)
+      .setResponseValidation(this.config, requestConfig)
+      .addPathParam({
+        key: 'api_version',
+        value: apiVersion,
+      })
+      .build();
+    return this.client.call<GetHosterListOkResponse>(request);
   }
 }

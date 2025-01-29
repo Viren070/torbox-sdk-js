@@ -36,16 +36,19 @@ No authorization needed. This is a whitelabel OAuth solution.
     apiVersion: string,
     provider: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/integration/oauth/{provider}')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -58,7 +61,7 @@ No authorization needed. This is a whitelabel OAuth solution.
         value: provider,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -71,20 +74,19 @@ Requires an API key using the Authorization Bearer Header.
  * @param {string} apiVersion - 
  * @returns {Promise<HttpResponse<any>>} 
  */
-  async queueGoogleDrive(
-    apiVersion: string,
-    body: any,
-    requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  async queueGoogleDrive(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/integration/googledrive')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -95,7 +97,7 @@ Requires an API key using the Authorization Bearer Header.
       .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
       .addBody(body)
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -108,16 +110,19 @@ Requires an API key using the Authorization Bearer Header.
  * @param {string} apiVersion - 
  * @returns {Promise<HttpResponse<any>>} 
  */
-  async queueOnedrive(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  async queueOnedrive(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/integration/onedrive')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -128,7 +133,7 @@ Requires an API key using the Authorization Bearer Header.
       .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
       .addBody(body)
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -141,16 +146,19 @@ Requires an API key using the Authorization Bearer Header.
  * @param {string} apiVersion - 
  * @returns {Promise<HttpResponse<any>>} 
  */
-  async queueGofile(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  async queueGofile(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/integration/gofile')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -161,7 +169,7 @@ Requires an API key using the Authorization Bearer Header.
       .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
       .addBody(body)
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -174,16 +182,19 @@ Requires an API key using the Authorization Bearer Header.
  * @param {string} apiVersion - 
  * @returns {Promise<HttpResponse<any>>} 
  */
-  async queue1fichier(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  async queue1fichier(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/integration/1fichier')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -194,7 +205,7 @@ Requires an API key using the Authorization Bearer Header.
       .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
       .addBody(body)
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -217,15 +228,18 @@ Requires an API key using the Authorization Bearer Header.
  * @returns {Promise<HttpResponse<GetAllJobsOkResponse>>} Get All Jobs Success
  */
   async getAllJobs(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<GetAllJobsOkResponse>> {
-    const request = new RequestBuilder<GetAllJobsOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/integration/jobs')
       .setRequestSchema(z.any())
-      .setResponseSchema(getAllJobsOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getAllJobsOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -261,15 +275,18 @@ Requires an API key using the Authorization Bearer Header.
     jobId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<string>> {
-    const request = new RequestBuilder<string>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/integration/job/{job_id}')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.string())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Text)
+      .addResponse({
+        schema: z.string(),
+        contentType: ContentType.Text,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -309,15 +326,18 @@ Requires an API key using the Authorization Bearer Header.
     hash: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetAllJobsByHashOkResponse>> {
-    const request = new RequestBuilder<GetAllJobsByHashOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/integration/jobs/{hash}')
       .setRequestSchema(z.any())
-      .setResponseSchema(getAllJobsByHashOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getAllJobsByHashOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)

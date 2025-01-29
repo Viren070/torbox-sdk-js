@@ -20,10 +20,6 @@ export interface GetTorrentCachedAvailabilityParams {
   listFiles?: string;
 }
 
-export interface SearchAllTorrentsFromScraperParams {
-  query?: string;
-}
-
 export interface ExportTorrentDataParams {
   torrentId?: string;
   type?: string;

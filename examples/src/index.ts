@@ -1,4 +1,4 @@
-import { TorboxApi } from '@torbox/@torbox/torbox-api';
+import { TorboxApi } from '@torbox/torbox-api';
 
 (async () => {
   const torboxApi = new TorboxApi({

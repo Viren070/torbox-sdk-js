@@ -26,15 +26,18 @@ Requires an API key using as a query parameter using the `token` key.
     params?: GetRssNotificationFeedParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<string>> {
-    const request = new RequestBuilder<string>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/notifications/rss')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.string())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Text)
+      .addResponse({
+        schema: z.string(),
+        contentType: ContentType.Text,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -64,15 +67,18 @@ Requires an API key using the Authorization Bearer Header.
     apiVersion: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetNotificationFeedOkResponse>> {
-    const request = new RequestBuilder<GetNotificationFeedOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/notifications/mynotifications')
       .setRequestSchema(z.any())
-      .setResponseSchema(getNotificationFeedOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getNotificationFeedOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -94,16 +100,19 @@ Requires an API key using the Authorization Bearer Header.
  * @param {string} apiVersion - 
  * @returns {Promise<HttpResponse<any>>} 
  */
-  async clearAllNotifications(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  async clearAllNotifications(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/notifications/clear')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -112,7 +121,7 @@ Requires an API key using the Authorization Bearer Header.
         value: apiVersion,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -130,16 +139,19 @@ Requires an API key using the Authorization Bearer Header.
     apiVersion: string,
     notificationId: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/notifications/clear/{notification_id}')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -152,7 +164,7 @@ Requires an API key using the Authorization Bearer Header.
         value: notificationId,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -165,16 +177,19 @@ Requires an API key using the Authorization Bearer Header.
  * @param {string} apiVersion - 
  * @returns {Promise<HttpResponse<any>>} 
  */
-  async sendTestNotification(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  async sendTestNotification(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/notifications/test')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -183,6 +198,6 @@ Requires an API key using the Authorization Bearer Header.
         value: apiVersion,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 }

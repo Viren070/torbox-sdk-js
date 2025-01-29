@@ -21,20 +21,19 @@ Requires an API key using the Authorization Bearer Header as well as passing the
  * @param {string} apiVersion - 
  * @returns {Promise<HttpResponse<any>>} 
  */
-  async refreshApiToken(
-    apiVersion: string,
-    body: any,
-    requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  async refreshApiToken(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/user/refreshtoken')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -45,7 +44,7 @@ Requires an API key using the Authorization Bearer Header as well as passing the
       .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
       .addBody(body)
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -74,15 +73,18 @@ Requires an API key using the Authorization Bearer Header.
     params?: GetUserDataParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<GetUserDataOkResponse>> {
-    const request = new RequestBuilder<GetUserDataOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/{api_version}/api/user/me')
       .setRequestSchema(z.any())
-      .setResponseSchema(getUserDataOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: getUserDataOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -99,25 +101,35 @@ Requires an API key using the Authorization Bearer Header.
   }
 
   /**
-   * Add Referral To Account
-   * @param {string} apiVersion -
-   * @param {string} [referral] - A referral code. Must be UUID.
-   * @returns {Promise<HttpResponse<AddReferralToAccountOkResponse>>} Add Referral To Account Success
-   */
+ * ### Overview
+Automatically adds a referral code to the user's account. This can be used for developers to automatically add their referral to user's accounts who use their service.
+
+This will not override any referral a user already has. If they already have one, then it cannot be changed using this endpoint. It can only be done by the user on the [website](https://torbox.app/subscription).
+
+### Authorization
+
+Requires an API key using the Authorization Bearer Header. Use the user's API key, not your own.
+ * @param {string} apiVersion - 
+ * @param {string} [referral] - A referral code. Must be UUID.
+ * @returns {Promise<HttpResponse<AddReferralToAccountOkResponse>>} Add Referral To Account Success
+ */
   async addReferralToAccount(
     apiVersion: string,
     params?: AddReferralToAccountParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<AddReferralToAccountOkResponse>> {
-    const request = new RequestBuilder<AddReferralToAccountOkResponse>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/{api_version}/api/user/addreferral')
       .setRequestSchema(z.any())
-      .setResponseSchema(addReferralToAccountOkResponseResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: addReferralToAccountOkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -131,5 +143,39 @@ Requires an API key using the Authorization Bearer Header.
       })
       .build();
     return this.client.call<AddReferralToAccountOkResponse>(request);
+  }
+
+  /**
+ * ### Overview
+Requests a 6 digit code to be sent to the user's email for verification. Used to verify a user actually wants to perform a potentially dangerous action.
+
+### Authorization
+
+Requires an API key using the Authorization Bearer Header.
+ * @param {string} apiVersion - 
+ * @returns {Promise<HttpResponse<any>>} 
+ */
+  async getConfirmationCode(apiVersion: string, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
+      .setBaseUrl(this.config)
+      .setConfig(this.config)
+      .setMethod('GET')
+      .setPath('/{api_version}/api/user/getconfirmation')
+      .setRequestSchema(z.any())
+      .setRequestContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
+      .setRetryAttempts(this.config, requestConfig)
+      .setRetryDelayMs(this.config, requestConfig)
+      .setResponseValidation(this.config, requestConfig)
+      .addPathParam({
+        key: 'api_version',
+        value: apiVersion,
+      })
+      .build();
+    return this.client.call<void>(request);
   }
 }
