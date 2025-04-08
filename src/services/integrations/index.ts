@@ -1,2 +1,2 @@
-export { IntegrationsService } from './integrations';
+export { IntegrationsService } from './integrations-service';
 export * from './models';

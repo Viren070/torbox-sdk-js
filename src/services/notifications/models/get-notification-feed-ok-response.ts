@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  GetNotificationFeedOkResponseData,
   getNotificationFeedOkResponseData,
   getNotificationFeedOkResponseDataRequest,
   getNotificationFeedOkResponseDataResponse,
@@ -54,10 +55,10 @@ export const getNotificationFeedOkResponseResponse = z.lazy(() => {
 export const getNotificationFeedOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.array(getNotificationFeedOkResponseDataRequest).nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: z.array(getNotificationFeedOkResponseDataRequest).optional(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

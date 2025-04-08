@@ -85,19 +85,19 @@ export const getAllJobsByHashOkResponseDataResponse = z.lazy(() => {
 export const getAllJobsByHashOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      authId: z.string().nullish(),
-      createdAt: z.string().nullish(),
-      detail: z.string().nullish(),
-      downloadUrl: z.string().nullish(),
-      fileId: z.number().nullish(),
-      hash: z.string().nullish(),
-      id: z.number().nullish(),
-      integration: z.string().nullish(),
-      progress: z.number().nullish(),
-      status: z.string().nullish(),
-      type: z.string().nullish(),
-      updatedAt: z.string().nullish(),
-      zip: z.boolean().nullish(),
+      authId: z.string().optional(),
+      createdAt: z.string().optional(),
+      detail: z.string().optional(),
+      downloadUrl: z.string().optional().nullable(),
+      fileId: z.number().optional(),
+      hash: z.string().optional(),
+      id: z.number().optional(),
+      integration: z.string().optional(),
+      progress: z.number().optional(),
+      status: z.string().optional(),
+      type: z.string().optional(),
+      updatedAt: z.string().optional(),
+      zip: z.boolean().optional(),
     })
     .transform((data) => ({
       auth_id: data['authId'],

@@ -44,7 +44,11 @@ export const createWebDownloadOkResponseDataResponse = z.lazy(() => {
  */
 export const createWebDownloadOkResponseDataRequest = z.lazy(() => {
   return z
-    .object({ authId: z.string().nullish(), hash: z.string().nullish(), webdownloadId: z.string().nullish() })
+    .object({
+      authId: z.string().optional(),
+      hash: z.string().optional(),
+      webdownloadId: z.string().optional(),
+    })
     .transform((data) => ({
       auth_id: data['authId'],
       hash: data['hash'],

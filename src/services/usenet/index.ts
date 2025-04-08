@@ -1,2 +1,2 @@
-export { UsenetService } from './usenet';
+export { UsenetService } from './usenet-service';
 export * from './models';

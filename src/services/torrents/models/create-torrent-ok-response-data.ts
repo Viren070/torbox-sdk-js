@@ -57,12 +57,12 @@ export const createTorrentOkResponseDataResponse = z.lazy(() => {
 export const createTorrentOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      activeLimit: z.number().nullish(),
-      authId: z.string().nullish(),
-      currentActiveDownloads: z.number().nullish(),
-      hash: z.string().nullish(),
-      queuedId: z.number().nullish(),
-      torrentId: z.number().nullish(),
+      activeLimit: z.number().optional(),
+      authId: z.string().optional(),
+      currentActiveDownloads: z.number().optional(),
+      hash: z.string().optional(),
+      queuedId: z.number().optional(),
+      torrentId: z.number().optional(),
     })
     .transform((data) => ({
       active_limit: data['activeLimit'],

@@ -77,17 +77,17 @@ export const getStatsOkResponseDataResponse = z.lazy(() => {
 export const getStatsOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      activeTorrents: z.number().nullish(),
-      activeUsenetDownloads: z.number().nullish(),
-      activeWebDownloads: z.number().nullish(),
-      totalBytesDownloaded: z.number().nullish(),
-      totalBytesUploaded: z.number().nullish(),
-      totalDownloads: z.number().nullish(),
-      totalServers: z.number().nullish(),
-      totalTorrentDownloads: z.number().nullish(),
-      totalUsenetDownloads: z.number().nullish(),
-      totalUsers: z.number().nullish(),
-      totalWebDownloads: z.number().nullish(),
+      activeTorrents: z.number().optional(),
+      activeUsenetDownloads: z.number().optional(),
+      activeWebDownloads: z.number().optional(),
+      totalBytesDownloaded: z.number().optional(),
+      totalBytesUploaded: z.number().optional(),
+      totalDownloads: z.number().optional(),
+      totalServers: z.number().optional(),
+      totalTorrentDownloads: z.number().optional(),
+      totalUsenetDownloads: z.number().optional(),
+      totalUsers: z.number().optional(),
+      totalWebDownloads: z.number().optional(),
     })
     .transform((data) => ({
       active_torrents: data['activeTorrents'],

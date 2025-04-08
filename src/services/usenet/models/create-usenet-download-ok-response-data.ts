@@ -44,7 +44,11 @@ export const createUsenetDownloadOkResponseDataResponse = z.lazy(() => {
  */
 export const createUsenetDownloadOkResponseDataRequest = z.lazy(() => {
   return z
-    .object({ authId: z.string().nullish(), hash: z.string().nullish(), usenetdownloadId: z.string().nullish() })
+    .object({
+      authId: z.string().optional(),
+      hash: z.string().optional(),
+      usenetdownloadId: z.string().optional(),
+    })
     .transform((data) => ({
       auth_id: data['authId'],
       hash: data['hash'],

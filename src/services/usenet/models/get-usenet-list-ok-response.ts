@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  GetUsenetListOkResponseData,
   getUsenetListOkResponseData,
   getUsenetListOkResponseDataRequest,
   getUsenetListOkResponseDataResponse,
@@ -54,10 +55,10 @@ export const getUsenetListOkResponseResponse = z.lazy(() => {
 export const getUsenetListOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.array(getUsenetListOkResponseDataRequest).nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: z.array(getUsenetListOkResponseDataRequest).optional(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

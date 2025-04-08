@@ -53,11 +53,11 @@ export const getNotificationFeedOkResponseDataResponse = z.lazy(() => {
 export const getNotificationFeedOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      authId: z.string().nullish(),
-      createdAt: z.string().nullish(),
-      id: z.number().nullish(),
-      message: z.string().nullish(),
-      title: z.string().nullish(),
+      authId: z.string().optional(),
+      createdAt: z.string().optional(),
+      id: z.number().optional(),
+      message: z.string().optional(),
+      title: z.string().optional(),
     })
     .transform((data) => ({
       auth_id: data['authId'],

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  CreateTorrentOkResponseData,
   createTorrentOkResponseData,
   createTorrentOkResponseDataRequest,
   createTorrentOkResponseDataResponse,
@@ -54,10 +55,10 @@ export const createTorrentOkResponseResponse = z.lazy(() => {
 export const createTorrentOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: createTorrentOkResponseDataRequest.nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: createTorrentOkResponseDataRequest.optional(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

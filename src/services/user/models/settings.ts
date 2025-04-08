@@ -39,8 +39,13 @@ export const settingsResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const settingsRequest = z.lazy(() => {
-  return z.object({ anothersetting: z.string().nullish(), setting: z.string().nullish() }).transform((data) => ({
-    anothersetting: data['anothersetting'],
-    setting: data['setting'],
-  }));
+  return z
+    .object({
+      anothersetting: z.string().optional(),
+      setting: z.string().optional(),
+    })
+    .transform((data) => ({
+      anothersetting: data['anothersetting'],
+      setting: data['setting'],
+    }));
 });

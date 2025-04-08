@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { dataFiles4, dataFiles4Request, dataFiles4Response } from './data-files-4';
+import { DataFiles4, dataFiles4, dataFiles4Request, dataFiles4Response } from './data-files-4';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -122,28 +122,28 @@ export const getWebDownloadListOkResponseDataResponse = z.lazy(() => {
 export const getWebDownloadListOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      active: z.boolean().nullish(),
-      authId: z.string().nullish(),
-      availability: z.number().nullish(),
-      createdAt: z.string().nullish(),
-      downloadFinished: z.boolean().nullish(),
-      downloadPresent: z.boolean().nullish(),
-      downloadSpeed: z.number().nullish(),
-      downloadState: z.string().nullish(),
-      error: z.string().nullish(),
-      eta: z.number().nullish(),
-      expiresAt: z.string().nullish(),
-      files: z.array(dataFiles4Request).nullish(),
-      hash: z.string().nullish(),
-      id: z.number().nullish(),
-      inactiveCheck: z.number().nullish(),
-      name: z.string().nullish(),
-      progress: z.number().nullish(),
-      server: z.number().nullish(),
-      size: z.number().nullish(),
-      torrentFile: z.boolean().nullish(),
-      updatedAt: z.string().nullish(),
-      uploadSpeed: z.number().nullish(),
+      active: z.boolean().optional(),
+      authId: z.string().optional(),
+      availability: z.number().optional(),
+      createdAt: z.string().optional(),
+      downloadFinished: z.boolean().optional(),
+      downloadPresent: z.boolean().optional(),
+      downloadSpeed: z.number().optional(),
+      downloadState: z.string().optional(),
+      error: z.string().optional(),
+      eta: z.number().optional(),
+      expiresAt: z.string().optional(),
+      files: z.array(dataFiles4Request).optional(),
+      hash: z.string().optional(),
+      id: z.number().optional(),
+      inactiveCheck: z.number().optional(),
+      name: z.string().optional(),
+      progress: z.number().optional(),
+      server: z.number().optional(),
+      size: z.number().optional(),
+      torrentFile: z.boolean().optional(),
+      updatedAt: z.string().optional(),
+      uploadSpeed: z.number().optional(),
     })
     .transform((data) => ({
       active: data['active'],

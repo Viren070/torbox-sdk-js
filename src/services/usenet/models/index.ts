@@ -4,3 +4,4 @@ export type { GetUsenetListOkResponse } from './get-usenet-list-ok-response';
 export type { CreateUsenetDownloadOkResponseData } from './create-usenet-download-ok-response-data';
 export type { GetUsenetListOkResponseData } from './get-usenet-list-ok-response-data';
 export type { DataFiles3 } from './data-files-3';
+export type { _8 } from './_8';

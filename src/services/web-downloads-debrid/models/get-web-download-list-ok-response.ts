@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  GetWebDownloadListOkResponseData,
   getWebDownloadListOkResponseData,
   getWebDownloadListOkResponseDataRequest,
   getWebDownloadListOkResponseDataResponse,
@@ -54,10 +55,10 @@ export const getWebDownloadListOkResponseResponse = z.lazy(() => {
 export const getWebDownloadListOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.array(getWebDownloadListOkResponseDataRequest).nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: z.array(getWebDownloadListOkResponseDataRequest).optional(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

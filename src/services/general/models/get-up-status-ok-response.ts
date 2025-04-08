@@ -49,10 +49,10 @@ export const getUpStatusOkResponseResponse = z.lazy(() => {
 export const getUpStatusOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.any().nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: z.any().optional().nullable(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

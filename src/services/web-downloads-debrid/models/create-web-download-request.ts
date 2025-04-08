@@ -35,7 +35,11 @@ export const createWebDownloadRequestResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const createWebDownloadRequestRequest = z.lazy(() => {
-  return z.object({ link: z.string().nullish() }).transform((data) => ({
-    link: data['link'],
-  }));
+  return z
+    .object({
+      link: z.string().optional(),
+    })
+    .transform((data) => ({
+      link: data['link'],
+    }));
 });

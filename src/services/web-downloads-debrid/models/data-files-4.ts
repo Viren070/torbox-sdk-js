@@ -61,13 +61,13 @@ export const dataFiles4Response = z.lazy(() => {
 export const dataFiles4Request = z.lazy(() => {
   return z
     .object({
-      id: z.number().nullish(),
-      md5: z.string().nullish(),
-      mimetype: z.string().nullish(),
-      name: z.string().nullish(),
-      s3Path: z.string().nullish(),
-      shortName: z.string().nullish(),
-      size: z.number().nullish(),
+      id: z.number().optional(),
+      md5: z.string().optional(),
+      mimetype: z.string().optional(),
+      name: z.string().optional(),
+      s3Path: z.string().optional(),
+      shortName: z.string().optional(),
+      size: z.number().optional(),
     })
     .transform((data) => ({
       id: data['id'],

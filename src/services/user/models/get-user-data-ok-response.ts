@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  GetUserDataOkResponseData,
   getUserDataOkResponseData,
   getUserDataOkResponseDataRequest,
   getUserDataOkResponseDataResponse,
@@ -54,10 +55,10 @@ export const getUserDataOkResponseResponse = z.lazy(() => {
 export const getUserDataOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: getUserDataOkResponseDataRequest.nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: getUserDataOkResponseDataRequest.optional(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

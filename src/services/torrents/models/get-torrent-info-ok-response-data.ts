@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { dataFiles2, dataFiles2Request, dataFiles2Response } from './data-files-2';
+import { DataFiles2, dataFiles2, dataFiles2Request, dataFiles2Response } from './data-files-2';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -50,10 +50,10 @@ export const getTorrentInfoOkResponseDataResponse = z.lazy(() => {
 export const getTorrentInfoOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      files: z.array(dataFiles2Request).nullish(),
-      hash: z.string().nullish(),
-      name: z.string().nullish(),
-      size: z.number().nullish(),
+      files: z.array(dataFiles2Request).optional(),
+      hash: z.string().optional(),
+      name: z.string().optional(),
+      size: z.number().optional(),
     })
     .transform((data) => ({
       files: data['files'],

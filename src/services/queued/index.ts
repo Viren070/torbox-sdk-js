@@ -1,1 +1,1 @@
-export { QueuedService } from './queued';
+export { QueuedService } from './queued-service';

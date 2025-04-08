@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { settings, settingsRequest, settingsResponse } from './settings';
+import { Settings, settings, settingsRequest, settingsResponse } from './settings';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -94,21 +94,21 @@ export const getUserDataOkResponseDataResponse = z.lazy(() => {
 export const getUserDataOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      authId: z.string().nullish(),
-      baseEmail: z.string().nullish(),
-      cooldownUntil: z.string().nullish(),
-      createdAt: z.string().nullish(),
-      customer: z.string().nullish(),
-      email: z.string().nullish(),
-      id: z.number().nullish(),
-      isSubscribed: z.boolean().nullish(),
-      plan: z.number().nullish(),
-      premiumExpiresAt: z.string().nullish(),
-      server: z.number().nullish(),
-      settings: settingsRequest.nullish(),
-      totalDownloaded: z.number().nullish(),
-      updatedAt: z.string().nullish(),
-      userReferral: z.string().nullish(),
+      authId: z.string().optional(),
+      baseEmail: z.string().optional(),
+      cooldownUntil: z.string().optional(),
+      createdAt: z.string().optional(),
+      customer: z.string().optional(),
+      email: z.string().optional(),
+      id: z.number().optional(),
+      isSubscribed: z.boolean().optional(),
+      plan: z.number().optional(),
+      premiumExpiresAt: z.string().optional(),
+      server: z.number().optional(),
+      settings: settingsRequest.optional(),
+      totalDownloaded: z.number().optional(),
+      updatedAt: z.string().optional(),
+      userReferral: z.string().optional(),
     })
     .transform((data) => ({
       auth_id: data['authId'],

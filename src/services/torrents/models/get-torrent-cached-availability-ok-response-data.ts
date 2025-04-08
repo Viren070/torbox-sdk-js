@@ -44,7 +44,11 @@ export const getTorrentCachedAvailabilityOkResponseDataResponse = z.lazy(() => {
  */
 export const getTorrentCachedAvailabilityOkResponseDataRequest = z.lazy(() => {
   return z
-    .object({ name: z.string().nullish(), size: z.number().nullish(), hash: z.string().nullish() })
+    .object({
+      name: z.string().optional(),
+      size: z.number().optional(),
+      hash: z.string().optional(),
+    })
     .transform((data) => ({
       name: data['name'],
       size: data['size'],

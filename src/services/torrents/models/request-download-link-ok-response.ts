@@ -49,10 +49,10 @@ export const requestDownloadLinkOkResponseResponse = z.lazy(() => {
 export const requestDownloadLinkOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.string().nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: z.string().optional(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

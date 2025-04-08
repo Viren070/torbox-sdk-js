@@ -10,6 +10,7 @@ export interface RequestDownloadLink2Params {
   zipLink?: string;
   torrentFile?: string;
   userIp?: string;
+  redirect?: string;
 }
 
 export interface GetWebDownloadListParams {

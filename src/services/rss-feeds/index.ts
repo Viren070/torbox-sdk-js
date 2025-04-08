@@ -1,1 +1,1 @@
-export { RssFeedsService } from './rss-feeds';
+export { RssFeedsService } from './rss-feeds-service';

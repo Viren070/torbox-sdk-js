@@ -6,3 +6,4 @@ export type { CreateWebDownloadOkResponseData } from './create-web-download-ok-r
 export type { GetWebDownloadListOkResponseData } from './get-web-download-list-ok-response-data';
 export type { DataFiles4 } from './data-files-4';
 export type { GetHosterListOkResponseData } from './get-hoster-list-ok-response-data';
+export type { _9 } from './_9';

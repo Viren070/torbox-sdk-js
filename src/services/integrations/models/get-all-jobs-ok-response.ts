@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  GetAllJobsOkResponseData,
   getAllJobsOkResponseData,
   getAllJobsOkResponseDataRequest,
   getAllJobsOkResponseDataResponse,
@@ -54,10 +55,10 @@ export const getAllJobsOkResponseResponse = z.lazy(() => {
 export const getAllJobsOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.array(getAllJobsOkResponseDataRequest).nullish(),
-      detail: z.string().nullish(),
-      error: z.any().nullish(),
-      success: z.boolean().nullish(),
+      data: z.array(getAllJobsOkResponseDataRequest).optional(),
+      detail: z.string().optional(),
+      error: z.any().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

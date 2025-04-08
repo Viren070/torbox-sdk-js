@@ -1,5 +1,5 @@
 {
-  "name": "torbox-api",
+  "name": "torbox_api",
   "version": "1.0.6",
   "private": true,
   "dependencies": {

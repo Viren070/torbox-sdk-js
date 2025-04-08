@@ -39,8 +39,13 @@ export const dataFiles2Response = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const dataFiles2Request = z.lazy(() => {
-  return z.object({ name: z.string().nullish(), size: z.number().nullish() }).transform((data) => ({
-    name: data['name'],
-    size: data['size'],
-  }));
+  return z
+    .object({
+      name: z.string().optional(),
+      size: z.number().optional(),
+    })
+    .transform((data) => ({
+      name: data['name'],
+      size: data['size'],
+    }));
 });

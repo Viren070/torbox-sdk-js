@@ -1,9 +1,4 @@
 import { z } from 'zod';
-import {
-  getTorrentCachedAvailabilityOkResponseData,
-  getTorrentCachedAvailabilityOkResponseDataRequest,
-  getTorrentCachedAvailabilityOkResponseDataResponse,
-} from './get-torrent-cached-availability-ok-response-data';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -54,10 +49,10 @@ export const getTorrentCachedAvailabilityOkResponseResponse = z.lazy(() => {
 export const getTorrentCachedAvailabilityOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.any().nullish(),
-      detail: z.string().nullish(),
-      error: z.string().nullish(),
-      success: z.boolean().nullish(),
+      data: z.any().optional(),
+      detail: z.string().optional(),
+      error: z.string().optional().nullable(),
+      success: z.boolean().optional(),
     })
     .transform((data) => ({
       data: data['data'],

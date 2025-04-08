@@ -20,7 +20,8 @@ export * from './services/rss-feeds';
 export * from './services/integrations';
 export * from './services/queued';
 
-export type * from './http';
+export * from './http';
+export { Environment } from './http/environment';
 
 export class TorboxApi {
   public readonly torrents: TorrentsService;
@@ -42,11 +43,6 @@ export class TorboxApi {
   public readonly queued: QueuedService;
 
   constructor(public config: SdkConfig) {
-    const baseUrl = config.environment || config.baseUrl || Environment.DEFAULT;
-    this.config = {
-      ...config,
-      baseUrl,
-    };
     this.torrents = new TorrentsService(this.config);
 
     this.usenet = new UsenetService(this.config);

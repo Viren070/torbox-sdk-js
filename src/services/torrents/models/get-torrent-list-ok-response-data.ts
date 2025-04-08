@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { dataFiles1, dataFiles1Request, dataFiles1Response } from './data-files-1';
+import { DataFiles1, dataFiles1, dataFiles1Request, dataFiles1Response } from './data-files-1';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -134,31 +134,31 @@ export const getTorrentListOkResponseDataResponse = z.lazy(() => {
 export const getTorrentListOkResponseDataRequest = z.lazy(() => {
   return z
     .object({
-      active: z.boolean().nullish(),
-      authId: z.string().nullish(),
-      availability: z.number().nullish(),
-      createdAt: z.string().nullish(),
-      downloadFinished: z.boolean().nullish(),
-      downloadPresent: z.boolean().nullish(),
-      downloadSpeed: z.number().nullish(),
-      downloadState: z.string().nullish(),
-      eta: z.number().nullish(),
-      expiresAt: z.string().nullish(),
-      files: z.array(dataFiles1Request).nullish(),
-      hash: z.string().nullish(),
-      id: z.number().nullish(),
-      inactiveCheck: z.number().nullish(),
-      magnet: z.string().nullish(),
-      name: z.string().nullish(),
-      peers: z.number().nullish(),
-      progress: z.number().nullish(),
-      ratio: z.number().nullish(),
-      seeds: z.number().nullish(),
-      server: z.number().nullish(),
-      size: z.number().nullish(),
-      torrentFile: z.boolean().nullish(),
-      updatedAt: z.string().nullish(),
-      uploadSpeed: z.number().nullish(),
+      active: z.boolean().optional(),
+      authId: z.string().optional(),
+      availability: z.number().optional(),
+      createdAt: z.string().optional(),
+      downloadFinished: z.boolean().optional(),
+      downloadPresent: z.boolean().optional(),
+      downloadSpeed: z.number().optional(),
+      downloadState: z.string().optional(),
+      eta: z.number().optional(),
+      expiresAt: z.string().optional(),
+      files: z.array(dataFiles1Request).optional(),
+      hash: z.string().optional(),
+      id: z.number().optional(),
+      inactiveCheck: z.number().optional(),
+      magnet: z.string().optional(),
+      name: z.string().optional(),
+      peers: z.number().optional(),
+      progress: z.number().optional(),
+      ratio: z.number().optional(),
+      seeds: z.number().optional(),
+      server: z.number().optional(),
+      size: z.number().optional(),
+      torrentFile: z.boolean().optional(),
+      updatedAt: z.string().optional(),
+      uploadSpeed: z.number().optional(),
     })
     .transform((data) => ({
       active: data['active'],

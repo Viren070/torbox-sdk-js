@@ -5,6 +5,7 @@ export interface RequestDownloadLink1Params {
   zipLink?: string;
   torrentFile?: string;
   userIp?: string;
+  redirect?: string;
 }
 
 export interface GetUsenetListParams {

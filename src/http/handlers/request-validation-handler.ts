@@ -1,5 +1,7 @@
+import { ZodError } from 'zod';
 import { Request } from '../transport/request';
 import { ContentType, HttpResponse, RequestHandler } from '../types';
+import { ValidationError } from '../errors/validation-error';
 
 export class RequestValidationHandler implements RequestHandler {
   next?: RequestHandler;
@@ -26,11 +28,20 @@ export class RequestValidationHandler implements RequestHandler {
 
   validateRequest(request: Request): void {
     if (request.requestContentType === ContentType.Json) {
-      request.body = JSON.stringify(request.requestSchema?.parse(request.body));
+      try {
+        const parsedBody = request.requestSchema?.parse(request.body);
+        request.body = JSON.stringify(parsedBody);
+      } catch (error) {
+        if (error instanceof ZodError) {
+          throw new ValidationError(error, request.body);
+        }
+        throw error;
+      }
     } else if (
       request.requestContentType === ContentType.Xml ||
-      request.requestContentType === ContentType.Binary ||
-      request.requestContentType === ContentType.Text
+      request.requestContentType === ContentType.Text ||
+      request.requestContentType === ContentType.Image ||
+      request.requestContentType === ContentType.Binary
     ) {
       request.body = request.body;
     } else if (request.requestContentType === ContentType.FormUrlEncoded) {
@@ -60,7 +71,9 @@ export class RequestValidationHandler implements RequestHandler {
     if (validatedBody instanceof FormData) {
       const params = new URLSearchParams();
       validatedBody.forEach((value, key) => {
-        params.append(key, value.toString());
+        if (value != null) {
+          params.append(key, value.toString());
+        }
       });
       return params.toString();
     }
@@ -68,7 +81,9 @@ export class RequestValidationHandler implements RequestHandler {
     if (typeof validatedBody === 'object' && !Array.isArray(validatedBody)) {
       const params = new URLSearchParams();
       for (const [key, value] of Object.entries(validatedBody)) {
-        params.append(key, `${value}`);
+        if (value != null) {
+          params.append(key, `${value}`);
+        }
       }
       return params.toString();
     }

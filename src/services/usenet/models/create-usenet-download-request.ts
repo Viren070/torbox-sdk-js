@@ -39,8 +39,13 @@ export const createUsenetDownloadRequestResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const createUsenetDownloadRequestRequest = z.lazy(() => {
-  return z.object({ file: z.instanceof(ArrayBuffer).nullish(), link: z.string().nullish() }).transform((data) => ({
-    file: data['file'],
-    link: data['link'],
-  }));
+  return z
+    .object({
+      file: z.instanceof(ArrayBuffer).optional(),
+      link: z.string().optional(),
+    })
+    .transform((data) => ({
+      file: data['file'],
+      link: data['link'],
+    }));
 });

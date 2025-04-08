@@ -57,12 +57,12 @@ export const createTorrentRequestResponse = z.lazy(() => {
 export const createTorrentRequestRequest = z.lazy(() => {
   return z
     .object({
-      allowZip: z.string().nullish(),
-      asQueued: z.string().nullish(),
-      file: z.instanceof(ArrayBuffer).nullish(),
-      magnet: z.string().nullish(),
-      name: z.string().nullish(),
-      seed: z.string().nullish(),
+      allowZip: z.string().optional(),
+      asQueued: z.string().optional(),
+      file: z.instanceof(ArrayBuffer).optional(),
+      magnet: z.string().optional(),
+      name: z.string().optional(),
+      seed: z.string().optional(),
     })
     .transform((data) => ({
       allow_zip: data['allowZip'],

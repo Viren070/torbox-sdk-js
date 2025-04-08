@@ -1,2 +1,2 @@
-export { UserService } from './user';
+export { UserService } from './user-service';
 export * from './models';
