@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export type I_9Schema = {
-  data?: any;
+  data?: any | null;
   detail?: string;
   error?: string;
   success?: boolean;
@@ -24,7 +24,7 @@ export const _9Response = z.lazy(() => {
 });
 
 export class _9 extends Error {
-  public data?: any;
+  public data?: any | null;
   public detail?: string;
   public error?: string;
   public success?: boolean;

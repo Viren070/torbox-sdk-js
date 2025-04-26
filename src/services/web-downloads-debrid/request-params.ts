@@ -8,7 +8,6 @@ export interface RequestDownloadLink2Params {
   webId?: string;
   fileId?: string;
   zipLink?: string;
-  torrentFile?: string;
   userIp?: string;
   redirect?: string;
 }

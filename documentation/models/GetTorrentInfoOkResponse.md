@@ -13,12 +13,15 @@
 
 **Properties**
 
-| Name  | Type         | Required | Description |
-| :---- | :----------- | :------- | :---------- |
-| files | DataFiles2[] | ❌       |             |
-| hash  | string       | ❌       |             |
-| name  | string       | ❌       |             |
-| size  | number       | ❌       |             |
+| Name     | Type         | Required | Description |
+| :------- | :----------- | :------- | :---------- |
+| files    | DataFiles2[] | ❌       |             |
+| hash     | string       | ❌       |             |
+| name     | string       | ❌       |             |
+| peers    | number       | ❌       |             |
+| seeds    | number       | ❌       |             |
+| size     | number       | ❌       |             |
+| trackers | any[]        | ❌       |             |
 
 # DataFiles2
 

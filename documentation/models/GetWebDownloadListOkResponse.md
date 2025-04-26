@@ -26,7 +26,7 @@
 | error            | string       | ❌       |             |
 | eta              | number       | ❌       |             |
 | expiresAt        | string       | ❌       |             |
-| files            | DataFiles4[] | ❌       |             |
+| files            | DataFiles5[] | ❌       |             |
 | hash             | string       | ❌       |             |
 | id               | number       | ❌       |             |
 | inactiveCheck    | number       | ❌       |             |
@@ -38,7 +38,7 @@
 | updatedAt        | string       | ❌       |             |
 | uploadSpeed      | number       | ❌       |             |
 
-# DataFiles4
+# DataFiles5
 
 **Properties**
 

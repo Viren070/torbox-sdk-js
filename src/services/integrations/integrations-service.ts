@@ -120,6 +120,44 @@ Requires an API key using the Authorization Bearer Header.
 
   /**
  * ### Overview
+Queues a job to upload the specified file or zip to Pixeldrain.
+
+### Authorization
+
+Requires an API key using the Authorization Bearer Header.
+ * @param {string} apiVersion - 
+ * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
+ * @returns {Promise<HttpResponse<any>>} 
+ */
+  async queuePixeldrain(apiVersion: string, body: any, requestConfig?: RequestConfig): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
+      .setConfig(this.config)
+      .setMethod('POST')
+      .setPath('/{api_version}/api/integration/pixeldrain')
+      .setRequestSchema(z.any())
+      .addAccessTokenAuth(this.config.token, 'Bearer')
+      .setRequestContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
+      .setRetryAttempts(this.config, requestConfig)
+      .setRetryDelayMs(this.config, requestConfig)
+      .setResponseValidation(this.config, requestConfig)
+      .addPathParam({
+        key: 'api_version',
+        value: apiVersion,
+      })
+      .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
+      .addBody(body)
+      .build();
+    return this.client.call<void>(request);
+  }
+
+  /**
+ * ### Overview
 Queues a job to upload the specified file or zip to the OneDrive sent with the `onedrive_token` key. To get this key, either get an OAuth2 token using `/oauth/onedrive` or your own solution. Make sure when creating the OAuth link you use the scope `files.readwrite.all`. This is compatible with all different types of Microsoft accounts.
 
 ### Authorization

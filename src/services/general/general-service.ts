@@ -10,6 +10,7 @@ import {
   GetChangelogsJsonOkResponse,
   getChangelogsJsonOkResponseResponse,
 } from './models/get-changelogs-json-ok-response';
+import { GetSpeedtestFilesParams } from './request-params';
 
 export class GeneralService extends BaseService {
   /**
@@ -157,5 +158,57 @@ None needed.
       })
       .build();
     return this.client.call<GetChangelogsJsonOkResponse>(request);
+  }
+
+  /**
+ * ### Overview
+Gets CDN speedtest files. This can be used for speedtesting TorBox for users or other usages, such as checking download speeds for verification. Provides all necessary data such as region, server name, and even coordinates. Uses the requesting IP to determine if the server is the closest to the user.  
+  
+You also have the ability to choose between long tests or short tests via the "test_length" parameter. You may also force the region selection by passing the "region" as a specific region.
+
+### Authorization
+
+None needed.
+ * @param {string} apiVersion - 
+ * @param {string} [params.testLength] - Determines the size of the file used for the speedtest. May be "long" or "short". Optional.
+ * @param {string} [params.region] - Determines what cdns are returned. May be any region that TorBox is located in. To get this value, send a request without this value to determine all of the available regions that are available.
+ * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
+ * @returns {Promise<HttpResponse<any>>} 
+ */
+  async getSpeedtestFiles(
+    apiVersion: string,
+    params?: GetSpeedtestFilesParams,
+    requestConfig?: RequestConfig,
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
+      .setConfig(this.config)
+      .setMethod('GET')
+      .setPath('/{api_version}/api/speedtest')
+      .setRequestSchema(z.any())
+      .addAccessTokenAuth(this.config.token, 'Bearer')
+      .setRequestContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 200,
+      })
+      .setRetryAttempts(this.config, requestConfig)
+      .setRetryDelayMs(this.config, requestConfig)
+      .setResponseValidation(this.config, requestConfig)
+      .addPathParam({
+        key: 'api_version',
+        value: apiVersion,
+      })
+      .addQueryParam({
+        key: 'test_length',
+        value: params?.testLength,
+      })
+      .addQueryParam({
+        key: 'region',
+        value: params?.region,
+      })
+      .build();
+    return this.client.call<void>(request);
   }
 }

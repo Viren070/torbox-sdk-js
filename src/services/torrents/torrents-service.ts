@@ -35,6 +35,8 @@ import { _5 } from './models/_5';
 import { _6 } from './models/_6';
 import { GetTorrentInfoOkResponse, getTorrentInfoOkResponseResponse } from './models/get-torrent-info-ok-response';
 import { _7 } from './models/_7';
+import { GetTorrentInfo1Request, getTorrentInfo1RequestRequest } from './models/get-torrent-info1-request';
+import { GetTorrentInfo1OkResponse, getTorrentInfo1OkResponseResponse } from './models/get-torrent-info1-ok-response';
 
 export class TorrentsService extends BaseService {
   /**
@@ -167,7 +169,6 @@ Requires an API key as a parameter for the `token` parameter.
  * @param {string} [params.torrentId] - The torrent's ID that you want to download
  * @param {string} [params.fileId] - The files's ID that you want to download
  * @param {string} [params.zipLink] - If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given.
- * @param {string} [params.torrentFile] - If you want a .torrent file to be downloaded. Does not work with the zip_link option. Optional.
  * @param {string} [params.userIp] - The user's IP to determine the closest CDN. Optional.
  * @param {string} [params.redirect] - If you want to redirect the user to the CDN link. This is useful for creating permalinks so that you can just make this request URL the link.
  * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
@@ -213,10 +214,6 @@ Requires an API key as a parameter for the `token` parameter.
       .addQueryParam({
         key: 'zip_link',
         value: params?.zipLink,
-      })
-      .addQueryParam({
-        key: 'torrent_file',
-        value: params?.torrentFile,
       })
       .addQueryParam({
         key: 'user_ip',
@@ -485,5 +482,55 @@ None required.
       })
       .build();
     return this.client.call<GetTorrentInfoOkResponse>(request);
+  }
+
+  /**
+ * ### Overview
+Same as the GET route, but allows posting data such as magnet, and torrent files.
+
+Hashes will have precedence over magnets, and magnets will have precedence over torrent files.
+
+Only proper torrent files are accepted.
+
+At least one of hash, magnet, or torrent file is required.
+
+A general route that allows you to give a hash, and TorBox will return data about the torrent. This data is retrieved from the Bittorrent network, so expect it to take some time. If the request goes longer than 10 seconds, TorBox will cancel it. You can adjust this if you like, but the default is 10 seconds. This route is cached as well, so subsequent requests will be instant.
+
+### Authorization
+
+None required.
+ * @param {string} apiVersion - 
+ * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
+ * @returns {Promise<HttpResponse<GetTorrentInfo1OkResponse>>} Get Torrent Info Success
+ */
+  async getTorrentInfo1(
+    apiVersion: string,
+    body: GetTorrentInfo1Request,
+    requestConfig?: RequestConfig,
+  ): Promise<HttpResponse<GetTorrentInfo1OkResponse>> {
+    const request = new RequestBuilder()
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
+      .setConfig(this.config)
+      .setMethod('POST')
+      .setPath('/{api_version}/api/torrents/torrentinfo')
+      .setRequestSchema(getTorrentInfo1RequestRequest)
+      .addAccessTokenAuth(this.config.token, 'Bearer')
+      .setRequestContentType(ContentType.MultipartFormData)
+      .addResponse({
+        schema: getTorrentInfo1OkResponseResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
+      .setRetryAttempts(this.config, requestConfig)
+      .setRetryDelayMs(this.config, requestConfig)
+      .setResponseValidation(this.config, requestConfig)
+      .addPathParam({
+        key: 'api_version',
+        value: apiVersion,
+      })
+      .addHeaderParam({ key: 'Content-Type', value: 'multipart/form-data' })
+      .addBody(body)
+      .build();
+    return this.client.call<GetTorrentInfo1OkResponse>(request);
   }
 }

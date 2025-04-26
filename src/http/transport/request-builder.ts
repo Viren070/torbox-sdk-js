@@ -1,12 +1,12 @@
 import z, { ZodType } from 'zod';
+import { Request } from './request';
 import {
-  Request,
   CreateRequestParameters,
   RequestParameter,
   RequestPagination,
   ResponseDefinition,
   ErrorDefinition,
-} from './request';
+} from './types';
 import { ContentType, HttpMethod, SdkConfig, RequestConfig, RetryOptions, ValidationOptions } from '../types';
 import { Environment } from '../environment';
 import { SerializationStyle } from '../serialization/base-serializer';
@@ -144,8 +144,8 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       return this;
     }
 
-    this.params.headers.set(keyName ?? 'X-API-Key', {
-      key: keyName ?? 'X-API-Key',
+    this.params.headers.set(keyName ?? 'X-API-KEY', {
+      key: keyName ?? 'X-API-KEY',
       value: apiKey,
       explode: false,
       style: SerializationStyle.SIMPLE,

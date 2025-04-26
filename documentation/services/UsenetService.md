@@ -90,16 +90,15 @@ import { TorboxApi } from '@torbox/torbox-api';
 
 **Parameters**
 
-| Name        | Type   | Required | Description                                                                                                                                   |
-| :---------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| apiVersion  | string | ✅       |                                                                                                                                               |
-| token       | string | ❌       | Your API Key                                                                                                                                  |
-| usenetId    | string | ❌       | The usenet download's ID that you want to download                                                                                            |
-| fileId      | string | ❌       | The files's ID that you want to download                                                                                                      |
-| zipLink     | string | ❌       | If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given.                                              |
-| torrentFile | string | ❌       | If you want a .torrent file to be downloaded. Does not work with the zip_link option. Optional.                                               |
-| userIp      | string | ❌       | The user's IP to determine the closest CDN. Optional.                                                                                         |
-| redirect    | string | ❌       | If you want to redirect the user to the CDN link. This is useful for creating permalinks so that you can just make this request URL the link. |
+| Name       | Type   | Required | Description                                                                                                                                   |
+| :--------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| apiVersion | string | ✅       |                                                                                                                                               |
+| token      | string | ❌       | Your API Key                                                                                                                                  |
+| usenetId   | string | ❌       | The usenet download's ID that you want to download                                                                                            |
+| fileId     | string | ❌       | The files's ID that you want to download                                                                                                      |
+| zipLink    | string | ❌       | If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given.                                              |
+| userIp     | string | ❌       | The user's IP to determine the closest CDN. Optional.                                                                                         |
+| redirect   | string | ❌       | If you want to redirect the user to the CDN link. This is useful for creating permalinks so that you can just make this request URL the link. |
 
 **Example Usage Code Snippet**
 
@@ -116,7 +115,6 @@ import { TorboxApi } from '@torbox/torbox-api';
     usenetId: '{{usenet_id}}',
     fileId: '{{usenet_file_id}}',
     zipLink: 'boolean',
-    torrentFile: 'boolean',
     userIp: 'string',
     redirect: 'boolean',
   });

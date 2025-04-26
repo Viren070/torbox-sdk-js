@@ -25,7 +25,7 @@
 | downloadState    | string       | ❌       |             |
 | eta              | number       | ❌       |             |
 | expiresAt        | string       | ❌       |             |
-| files            | DataFiles3[] | ❌       |             |
+| files            | DataFiles4[] | ❌       |             |
 | hash             | string       | ❌       |             |
 | id               | number       | ❌       |             |
 | inactiveCheck    | number       | ❌       |             |
@@ -37,7 +37,7 @@
 | updatedAt        | string       | ❌       |             |
 | uploadSpeed      | number       | ❌       |             |
 
-# DataFiles3
+# DataFiles4
 
 **Properties**
 

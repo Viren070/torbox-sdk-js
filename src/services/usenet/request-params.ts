@@ -3,7 +3,6 @@ export interface RequestDownloadLink1Params {
   usenetId?: string;
   fileId?: string;
   zipLink?: string;
-  torrentFile?: string;
   userIp?: string;
   redirect?: string;
 }

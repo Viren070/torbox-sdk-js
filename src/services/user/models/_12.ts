@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { _13, _13Request, _13Response } from './_13';
 
 export type I_12Schema = {
-  data?: any;
+  data?: any | null;
   detail?: _13;
   error?: string;
   success?: boolean;
@@ -25,7 +25,7 @@ export const _12Response = z.lazy(() => {
 });
 
 export class _12 extends Error {
-  public data?: any;
+  public data?: any | null;
   public detail?: _13;
   public error?: string;
   public success?: boolean;

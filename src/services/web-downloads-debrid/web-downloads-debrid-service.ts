@@ -144,7 +144,6 @@ Requires an API key as a parameter for the `token` parameter.
  * @param {string} [params.webId] - The web download's ID that you want to download
  * @param {string} [params.fileId] - The files's ID that you want to download
  * @param {string} [params.zipLink] - If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given.
- * @param {string} [params.torrentFile] - If you want a .torrent file to be downloaded. Does not work with the zip_link option. Optional.
  * @param {string} [params.userIp] - The user's IP to determine the closest CDN. Optional.
  * @param {string} [params.redirect] - If you want to redirect the user to the CDN link. This is useful for creating permalinks so that you can just make this request URL the link.
  * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
@@ -190,10 +189,6 @@ Requires an API key as a parameter for the `token` parameter.
       .addQueryParam({
         key: 'zip_link',
         value: params?.zipLink,
-      })
-      .addQueryParam({
-        key: 'torrent_file',
-        value: params?.torrentFile,
       })
       .addQueryParam({
         key: 'user_ip',

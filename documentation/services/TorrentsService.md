@@ -11,6 +11,7 @@ A list of all methods in the `TorrentsService` service. Click on the method name
 | [getTorrentCachedAvailability](#gettorrentcachedavailability) | ### Overview Takes in a list of comma separated torrent hashes and checks if the torrent is cached. This endpoint only gets a max of around 100 at a time, due to http limits in queries. If you want to do more, you can simply do more hash queries. Such as: `?hash=XXXX&hash=XXXX&hash=XXXX` or `?hash=XXXX,XXXX&hash=XXXX&hash=XXXX,XXXX` and this will work too. Performance is very fast. Less than 1 second per 100. Time is approximately O(log n) time for those interested in taking it to its max. That is without caching as well. This endpoint stores a cache for an hour. You may also pass a `format` parameter with the format you want the data in. Options are either `object` or `list`. You can view examples of both below. ### Authorization Requires an API key using the Authorization Bearer Header.                                                                                                                                                                                                                                                                                         |
 | [exportTorrentData](#exporttorrentdata)                       | ### Overview Exports the magnet or torrent file. Requires a type to be passed. If type is **magnet**, it will return a JSON response with the magnet as a string in the _data_ key. If type is **file**, it will return a bittorrent file as a download. Not compatible with cached downloads. ### Authorization Requires an API key using the Authorization Bearer Header.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [getTorrentInfo](#gettorrentinfo)                             | ### Overview A general route that allows you to give a hash, and TorBox will return data about the torrent. This data is retrieved from the Bittorrent network, so expect it to take some time. If the request goes longer than 10 seconds, TorBox will cancel it. You can adjust this if you like, but the default is 10 seconds. This route is cached as well, so subsequent requests will be instant. ### Authorization None required.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [getTorrentInfo1](#gettorrentinfo1)                           | ### Overview Same as the GET route, but allows posting data such as magnet, and torrent files. Hashes will have precedence over magnets, and magnets will have precedence over torrent files. Only proper torrent files are accepted. At least one of hash, magnet, or torrent file is required. A general route that allows you to give a hash, and TorBox will return data about the torrent. This data is retrieved from the Bittorrent network, so expect it to take some time. If the request goes longer than 10 seconds, TorBox will cancel it. You can adjust this if you like, but the default is 10 seconds. This route is cached as well, so subsequent requests will be instant. ### Authorization None required.                                                                                                                                                                                                                                                                                                                                                                                           |
 
 ## createTorrent
 
@@ -100,16 +101,15 @@ import { TorboxApi } from '@torbox/torbox-api';
 
 **Parameters**
 
-| Name        | Type   | Required | Description                                                                                                                                   |
-| :---------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| apiVersion  | string | ✅       |                                                                                                                                               |
-| token       | string | ❌       | Your API Key                                                                                                                                  |
-| torrentId   | string | ❌       | The torrent's ID that you want to download                                                                                                    |
-| fileId      | string | ❌       | The files's ID that you want to download                                                                                                      |
-| zipLink     | string | ❌       | If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given.                                              |
-| torrentFile | string | ❌       | If you want a .torrent file to be downloaded. Does not work with the zip_link option. Optional.                                               |
-| userIp      | string | ❌       | The user's IP to determine the closest CDN. Optional.                                                                                         |
-| redirect    | string | ❌       | If you want to redirect the user to the CDN link. This is useful for creating permalinks so that you can just make this request URL the link. |
+| Name       | Type   | Required | Description                                                                                                                                   |
+| :--------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| apiVersion | string | ✅       |                                                                                                                                               |
+| token      | string | ❌       | Your API Key                                                                                                                                  |
+| torrentId  | string | ❌       | The torrent's ID that you want to download                                                                                                    |
+| fileId     | string | ❌       | The files's ID that you want to download                                                                                                      |
+| zipLink    | string | ❌       | If you want a zip link. Required if no file_id. Takes precedence over file_id if both are given.                                              |
+| userIp     | string | ❌       | The user's IP to determine the closest CDN. Optional.                                                                                         |
+| redirect   | string | ❌       | If you want to redirect the user to the CDN link. This is useful for creating permalinks so that you can just make this request URL the link. |
 
 **Return Type**
 
@@ -130,7 +130,6 @@ import { TorboxApi } from '@torbox/torbox-api';
     torrentId: '{{torrent_id}}',
     fileId: '{{torrent_file_id}}',
     zipLink: 'boolean',
-    torrentFile: 'boolean',
     userIp: 'string',
     redirect: 'boolean',
   });
@@ -292,6 +291,44 @@ import { TorboxApi } from '@torbox/torbox-api';
     hash: 'string',
     timeout: 'integer',
   });
+
+  console.log(data);
+})();
+```
+
+## getTorrentInfo1
+
+### Overview Same as the GET route, but allows posting data such as magnet, and torrent files. Hashes will have precedence over magnets, and magnets will have precedence over torrent files. Only proper torrent files are accepted. At least one of hash, magnet, or torrent file is required. A general route that allows you to give a hash, and TorBox will return data about the torrent. This data is retrieved from the Bittorrent network, so expect it to take some time. If the request goes longer than 10 seconds, TorBox will cancel it. You can adjust this if you like, but the default is 10 seconds. This route is cached as well, so subsequent requests will be instant. ### Authorization None required.
+
+- HTTP Method: `POST`
+- Endpoint: `/{api_version}/api/torrents/torrentinfo`
+
+**Parameters**
+
+| Name       | Type                                                          | Required | Description       |
+| :--------- | :------------------------------------------------------------ | :------- | :---------------- |
+| body       | [GetTorrentInfo1Request](../models/GetTorrentInfo1Request.md) | ❌       | The request body. |
+| apiVersion | string                                                        | ✅       |                   |
+
+**Return Type**
+
+`GetTorrentInfo1OkResponse`
+
+**Example Usage Code Snippet**
+
+```typescript
+import { GetTorrentInfo1Request, TorboxApi } from '@torbox/torbox-api';
+
+(async () => {
+  const torboxApi = new TorboxApi({
+    token: 'YOUR_TOKEN',
+  });
+
+  const getTorrentInfo1Request: GetTorrentInfo1Request = {
+    hash: 'dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c',
+  };
+
+  const { data } = await torboxApi.torrents.getTorrentInfo1('api_version', getTorrentInfo1Request);
 
   console.log(data);
 })();

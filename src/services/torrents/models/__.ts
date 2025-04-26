@@ -2,9 +2,9 @@ import { z } from 'zod';
 import { _1, _1Request, _1Response } from './_1';
 
 export type I__Schema = {
-  data?: _1;
+  data?: _1 | null;
   detail?: string;
-  error?: boolean;
+  error?: boolean | null;
   success?: boolean;
 };
 
@@ -25,9 +25,9 @@ export const _response = z.lazy(() => {
 });
 
 export class __ extends Error {
-  public data?: _1;
+  public data?: _1 | null;
   public detail?: string;
-  public error?: boolean;
+  public error?: boolean | null;
   public success?: boolean;
   constructor(message?: string, response?: unknown) {
     super(message);

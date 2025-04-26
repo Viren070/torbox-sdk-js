@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DataFiles4, dataFiles4, dataFiles4Request, dataFiles4Response } from './data-files-4';
+import { DataFiles5, dataFiles5, dataFiles5Request, dataFiles5Response } from './data-files-5';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -17,7 +17,7 @@ export const getWebDownloadListOkResponseData = z.lazy(() => {
     error: z.string().optional(),
     eta: z.number().optional(),
     expiresAt: z.string().optional(),
-    files: z.array(dataFiles4).optional(),
+    files: z.array(dataFiles5).optional(),
     hash: z.string().optional(),
     id: z.number().optional(),
     inactiveCheck: z.number().optional(),
@@ -45,7 +45,7 @@ export const getWebDownloadListOkResponseData = z.lazy(() => {
  * @property {string}
  * @property {number}
  * @property {string}
- * @property {DataFiles4[]}
+ * @property {DataFiles5[]}
  * @property {string}
  * @property {number}
  * @property {number}
@@ -77,7 +77,7 @@ export const getWebDownloadListOkResponseDataResponse = z.lazy(() => {
       error: z.string().optional(),
       eta: z.number().optional(),
       expires_at: z.string().optional(),
-      files: z.array(dataFiles4Response).optional(),
+      files: z.array(dataFiles5Response).optional(),
       hash: z.string().optional(),
       id: z.number().optional(),
       inactive_check: z.number().optional(),
@@ -133,7 +133,7 @@ export const getWebDownloadListOkResponseDataRequest = z.lazy(() => {
       error: z.string().optional(),
       eta: z.number().optional(),
       expiresAt: z.string().optional(),
-      files: z.array(dataFiles4Request).optional(),
+      files: z.array(dataFiles5Request).optional(),
       hash: z.string().optional(),
       id: z.number().optional(),
       inactiveCheck: z.number().optional(),

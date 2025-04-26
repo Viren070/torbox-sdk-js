@@ -1,3 +1,3 @@
 export enum Environment {
-  DEFAULT = '{{api_base}}',
+  DEFAULT = 'https://api.torbox.app',
 }

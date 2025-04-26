@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DataFiles3, dataFiles3, dataFiles3Request, dataFiles3Response } from './data-files-3';
+import { DataFiles4, dataFiles4, dataFiles4Request, dataFiles4Response } from './data-files-4';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -16,7 +16,7 @@ export const getUsenetListOkResponseData = z.lazy(() => {
     downloadState: z.string().optional(),
     eta: z.number().optional(),
     expiresAt: z.string().optional(),
-    files: z.array(dataFiles3).optional(),
+    files: z.array(dataFiles4).optional(),
     hash: z.string().optional(),
     id: z.number().optional(),
     inactiveCheck: z.number().optional(),
@@ -43,7 +43,7 @@ export const getUsenetListOkResponseData = z.lazy(() => {
  * @property {string}
  * @property {number}
  * @property {string}
- * @property {DataFiles3[]}
+ * @property {DataFiles4[]}
  * @property {string}
  * @property {number}
  * @property {number}
@@ -74,7 +74,7 @@ export const getUsenetListOkResponseDataResponse = z.lazy(() => {
       download_state: z.string().optional(),
       eta: z.number().optional(),
       expires_at: z.string().optional(),
-      files: z.array(dataFiles3Response).optional(),
+      files: z.array(dataFiles4Response).optional(),
       hash: z.string().optional(),
       id: z.number().optional(),
       inactive_check: z.number().optional(),
@@ -128,7 +128,7 @@ export const getUsenetListOkResponseDataRequest = z.lazy(() => {
       downloadState: z.string().optional(),
       eta: z.number().optional(),
       expiresAt: z.string().optional(),
-      files: z.array(dataFiles3Request).optional(),
+      files: z.array(dataFiles4Request).optional(),
       hash: z.string().optional(),
       id: z.number().optional(),
       inactiveCheck: z.number().optional(),

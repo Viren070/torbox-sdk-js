@@ -9,7 +9,10 @@ export const getTorrentInfoOkResponseData = z.lazy(() => {
     files: z.array(dataFiles2).optional(),
     hash: z.string().optional(),
     name: z.string().optional(),
+    peers: z.number().optional(),
+    seeds: z.number().optional(),
     size: z.number().optional(),
+    trackers: z.array(z.any()).optional(),
   });
 });
 
@@ -20,6 +23,9 @@ export const getTorrentInfoOkResponseData = z.lazy(() => {
  * @property {string}
  * @property {string}
  * @property {number}
+ * @property {number}
+ * @property {number}
+ * @property {any[]}
  */
 export type GetTorrentInfoOkResponseData = z.infer<typeof getTorrentInfoOkResponseData>;
 
@@ -33,13 +39,19 @@ export const getTorrentInfoOkResponseDataResponse = z.lazy(() => {
       files: z.array(dataFiles2Response).optional(),
       hash: z.string().optional(),
       name: z.string().optional(),
+      peers: z.number().optional(),
+      seeds: z.number().optional(),
       size: z.number().optional(),
+      trackers: z.array(z.any()).optional(),
     })
     .transform((data) => ({
       files: data['files'],
       hash: data['hash'],
       name: data['name'],
+      peers: data['peers'],
+      seeds: data['seeds'],
       size: data['size'],
+      trackers: data['trackers'],
     }));
 });
 
@@ -53,12 +65,18 @@ export const getTorrentInfoOkResponseDataRequest = z.lazy(() => {
       files: z.array(dataFiles2Request).optional(),
       hash: z.string().optional(),
       name: z.string().optional(),
+      peers: z.number().optional(),
+      seeds: z.number().optional(),
       size: z.number().optional(),
+      trackers: z.array(z.any()).optional(),
     })
     .transform((data) => ({
       files: data['files'],
       hash: data['hash'],
       name: data['name'],
+      peers: data['peers'],
+      seeds: data['seeds'],
       size: data['size'],
+      trackers: data['trackers'],
     }));
 });
