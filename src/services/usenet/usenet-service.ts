@@ -15,7 +15,7 @@ import {
 import { _8 } from './models/_8';
 import { GetUsenetCachedAvailabilityParams, GetUsenetListParams, RequestDownloadLink1Params } from './request-params';
 import { GetUsenetListOkResponse, getUsenetListOkResponseResponse } from './models/get-usenet-list-ok-response';
-import { RequestDownloadLinkOkResponse, requestDownloadLinkOkResponse } from './models/request-download-link-response';
+import { RequestDownloadLinkOkResponse, requestDownloadLinkOkResponseResponse } from './models/request-download-link-response';
 import { GetUsenetCachedAvailabilityOkResponse, getUsenetCachedAvailabilityOkResponseResponse } from './models/get-usenet-cached-availability-response';
 
 export class UsenetService extends BaseService {
@@ -171,7 +171,7 @@ Requires an API key as a parameter for the `token` parameter.
         status: 307,
       })
       .addResponse({
-        schema: requestDownloadLinkOkResponse,
+        schema: requestDownloadLinkOkResponseResponse,
         contentType: ContentType.Json,
         status: 200,
       })
