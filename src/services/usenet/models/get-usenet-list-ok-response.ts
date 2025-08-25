@@ -11,7 +11,10 @@ import {
  */
 export const getUsenetListOkResponse = z.lazy(() => {
   return z.object({
-    data: z.array(getUsenetListOkResponseData).optional(),
+    data: z.union([
+      z.array(getUsenetListOkResponseData),
+      getUsenetListOkResponseData
+    ]).optional(),
     detail: z.string().optional(),
     error: z.any().optional().nullable(),
     success: z.boolean().optional(),
@@ -35,7 +38,10 @@ export type GetUsenetListOkResponse = z.infer<typeof getUsenetListOkResponse>;
 export const getUsenetListOkResponseResponse = z.lazy(() => {
   return z
     .object({
-      data: z.array(getUsenetListOkResponseDataResponse).optional(),
+      data: z.union([
+        z.array(getUsenetListOkResponseDataResponse),
+        getUsenetListOkResponseDataResponse
+      ]).optional(),
       detail: z.string().optional(),
       error: z.any().optional().nullable(),
       success: z.boolean().optional(),
@@ -55,7 +61,10 @@ export const getUsenetListOkResponseResponse = z.lazy(() => {
 export const getUsenetListOkResponseRequest = z.lazy(() => {
   return z
     .object({
-      data: z.array(getUsenetListOkResponseDataRequest).optional(),
+      data: z.union([
+        z.array(getUsenetListOkResponseDataRequest),
+        getUsenetListOkResponseDataRequest
+      ]).optional(),
       detail: z.string().optional(),
       error: z.any().optional().nullable(),
       success: z.boolean().optional(),

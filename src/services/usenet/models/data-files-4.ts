@@ -6,7 +6,7 @@ import { z } from 'zod';
 export const dataFiles4 = z.lazy(() => {
   return z.object({
     id: z.number().optional(),
-    md5: z.string().optional(),
+    md5: z.string().optional().nullable(),
     mimetype: z.string().optional(),
     name: z.string().optional(),
     s3Path: z.string().optional(),
@@ -36,7 +36,7 @@ export const dataFiles4Response = z.lazy(() => {
   return z
     .object({
       id: z.number().optional(),
-      md5: z.string().optional(),
+      md5: z.string().optional().nullable(),
       mimetype: z.string().optional(),
       name: z.string().optional(),
       s3_path: z.string().optional(),
@@ -62,7 +62,7 @@ export const dataFiles4Request = z.lazy(() => {
   return z
     .object({
       id: z.number().optional(),
-      md5: z.string().optional(),
+      md5: z.string().optional().nullable(),
       mimetype: z.string().optional(),
       name: z.string().optional(),
       s3Path: z.string().optional(),
