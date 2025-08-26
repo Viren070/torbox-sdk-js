@@ -2864,7 +2864,7 @@ var getUsenetListOkResponseDataRequest = import_zod35.z.lazy(() => {
     downloadSpeed: import_zod35.z.number().optional(),
     downloadState: import_zod35.z.string().optional(),
     eta: import_zod35.z.number().optional(),
-    expiresAt: import_zod35.z.string().optional(),
+    expiresAt: import_zod35.z.string().optional().nullable(),
     files: import_zod35.z.array(dataFiles4Request).optional(),
     hash: import_zod35.z.string().optional(),
     id: import_zod35.z.number().optional(),

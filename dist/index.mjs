@@ -2818,7 +2818,7 @@ var getUsenetListOkResponseDataRequest = z33.lazy(() => {
     downloadSpeed: z33.number().optional(),
     downloadState: z33.string().optional(),
     eta: z33.number().optional(),
-    expiresAt: z33.string().optional(),
+    expiresAt: z33.string().optional().nullable(),
     files: z33.array(dataFiles4Request).optional(),
     hash: z33.string().optional(),
     id: z33.number().optional(),
