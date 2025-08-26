@@ -2687,7 +2687,7 @@ import { z as z32 } from "zod";
 var dataFiles4 = z32.lazy(() => {
   return z32.object({
     id: z32.number().optional(),
-    md5: z32.string().optional(),
+    md5: z32.string().optional().nullable(),
     mimetype: z32.string().optional(),
     name: z32.string().optional(),
     s3Path: z32.string().optional(),
@@ -2698,7 +2698,7 @@ var dataFiles4 = z32.lazy(() => {
 var dataFiles4Response = z32.lazy(() => {
   return z32.object({
     id: z32.number().optional(),
-    md5: z32.string().optional(),
+    md5: z32.string().optional().nullable(),
     mimetype: z32.string().optional(),
     name: z32.string().optional(),
     s3_path: z32.string().optional(),
@@ -2717,7 +2717,7 @@ var dataFiles4Response = z32.lazy(() => {
 var dataFiles4Request = z32.lazy(() => {
   return z32.object({
     id: z32.number().optional(),
-    md5: z32.string().optional(),
+    md5: z32.string().optional().nullable(),
     mimetype: z32.string().optional(),
     name: z32.string().optional(),
     s3Path: z32.string().optional(),

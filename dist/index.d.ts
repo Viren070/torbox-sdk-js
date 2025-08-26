@@ -399,6 +399,14 @@ declare const getTorrentListOkResponse: z.ZodLazy<z.ZodObject<{
         downloadFinished: z.ZodOptional<z.ZodBoolean>;
         downloadPresent: z.ZodOptional<z.ZodBoolean>;
         downloadSpeed: z.ZodOptional<z.ZodNumber>;
+        /**
+         *
+         * @typedef  {GetTorrentListOkResponse} getTorrentListOkResponse
+         * @property {GetTorrentListOkResponseData[]}
+         * @property {string}
+         * @property {any}
+         * @property {boolean}
+         */
         downloadState: z.ZodOptional<z.ZodString>;
         eta: z.ZodOptional<z.ZodNumber>;
         expiresAt: z.ZodOptional<z.ZodString>;
@@ -1626,7 +1634,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt: z.ZodOptional<z.ZodString>;
         files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
             id: z.ZodOptional<z.ZodNumber>;
-            md5: z.ZodOptional<z.ZodString>;
+            md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
             mimetype: z.ZodOptional<z.ZodString>;
             name: z.ZodOptional<z.ZodString>;
             s3Path: z.ZodOptional<z.ZodString>;
@@ -1634,7 +1642,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
             size: z.ZodOptional<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1642,7 +1650,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
             size?: number | undefined;
         }, {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1672,7 +1680,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1702,7 +1710,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1732,7 +1740,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt: z.ZodOptional<z.ZodString>;
         files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
             id: z.ZodOptional<z.ZodNumber>;
-            md5: z.ZodOptional<z.ZodString>;
+            md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
             mimetype: z.ZodOptional<z.ZodString>;
             name: z.ZodOptional<z.ZodString>;
             s3Path: z.ZodOptional<z.ZodString>;
@@ -1740,7 +1748,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
             size: z.ZodOptional<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1748,7 +1756,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
             size?: number | undefined;
         }, {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1778,7 +1786,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1808,7 +1816,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1843,7 +1851,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1873,7 +1881,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1908,7 +1916,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -1938,7 +1946,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         expiresAt?: string | undefined;
         files?: {
             id?: number | undefined;
-            md5?: string | undefined;
+            md5?: string | null | undefined;
             mimetype?: string | undefined;
             name?: string | undefined;
             s3Path?: string | undefined;
@@ -2220,7 +2228,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     expiresAt: z.ZodOptional<z.ZodString>;
     files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
         id: z.ZodOptional<z.ZodNumber>;
-        md5: z.ZodOptional<z.ZodString>;
+        md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
         mimetype: z.ZodOptional<z.ZodString>;
         name: z.ZodOptional<z.ZodString>;
         s3Path: z.ZodOptional<z.ZodString>;
@@ -2228,7 +2236,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
         size: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
         id?: number | undefined;
-        md5?: string | undefined;
+        md5?: string | null | undefined;
         mimetype?: string | undefined;
         name?: string | undefined;
         s3Path?: string | undefined;
@@ -2236,7 +2244,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
         size?: number | undefined;
     }, {
         id?: number | undefined;
-        md5?: string | undefined;
+        md5?: string | null | undefined;
         mimetype?: string | undefined;
         name?: string | undefined;
         s3Path?: string | undefined;
@@ -2266,7 +2274,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     expiresAt?: string | undefined;
     files?: {
         id?: number | undefined;
-        md5?: string | undefined;
+        md5?: string | null | undefined;
         mimetype?: string | undefined;
         name?: string | undefined;
         s3Path?: string | undefined;
@@ -2296,7 +2304,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     expiresAt?: string | undefined;
     files?: {
         id?: number | undefined;
-        md5?: string | undefined;
+        md5?: string | null | undefined;
         mimetype?: string | undefined;
         name?: string | undefined;
         s3Path?: string | undefined;
@@ -2346,7 +2354,7 @@ type GetUsenetListOkResponseData = z.infer<typeof getUsenetListOkResponseData>;
  */
 declare const dataFiles4: z.ZodLazy<z.ZodObject<{
     id: z.ZodOptional<z.ZodNumber>;
-    md5: z.ZodOptional<z.ZodString>;
+    md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     mimetype: z.ZodOptional<z.ZodString>;
     name: z.ZodOptional<z.ZodString>;
     s3Path: z.ZodOptional<z.ZodString>;
@@ -2354,7 +2362,7 @@ declare const dataFiles4: z.ZodLazy<z.ZodObject<{
     size: z.ZodOptional<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
     id?: number | undefined;
-    md5?: string | undefined;
+    md5?: string | null | undefined;
     mimetype?: string | undefined;
     name?: string | undefined;
     s3Path?: string | undefined;
@@ -2362,7 +2370,7 @@ declare const dataFiles4: z.ZodLazy<z.ZodObject<{
     size?: number | undefined;
 }, {
     id?: number | undefined;
-    md5?: string | undefined;
+    md5?: string | null | undefined;
     mimetype?: string | undefined;
     name?: string | undefined;
     s3Path?: string | undefined;
@@ -3730,7 +3738,9 @@ declare const getUserDataOkResponse: z.ZodLazy<z.ZodObject<{
         premiumExpiresAt: z.ZodOptional<z.ZodString>;
         server: z.ZodOptional<z.ZodNumber>;
         settings: z.ZodOptional<z.ZodLazy<z.ZodObject<{
-            anothersetting: z.ZodOptional<z.ZodString>;
+            anothersetting: z.ZodOptional<z.ZodString>; /**
+             * The shape of the model inside the application code - what the users use
+             */
             setting: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
             anothersetting?: string | undefined;
@@ -3741,10 +3751,6 @@ declare const getUserDataOkResponse: z.ZodLazy<z.ZodObject<{
         }>>>;
         totalDownloaded: z.ZodOptional<z.ZodNumber>;
         updatedAt: z.ZodOptional<z.ZodString>;
-        /**
-         * The shape of the model mapping from the api schema into the application shape.
-         * Is equal to application shape if all property names match the api schema
-         */
         userReferral: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
         authId?: string | undefined;

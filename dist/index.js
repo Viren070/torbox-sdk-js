@@ -2733,7 +2733,7 @@ var import_zod34 = require("zod");
 var dataFiles4 = import_zod34.z.lazy(() => {
   return import_zod34.z.object({
     id: import_zod34.z.number().optional(),
-    md5: import_zod34.z.string().optional(),
+    md5: import_zod34.z.string().optional().nullable(),
     mimetype: import_zod34.z.string().optional(),
     name: import_zod34.z.string().optional(),
     s3Path: import_zod34.z.string().optional(),
@@ -2744,7 +2744,7 @@ var dataFiles4 = import_zod34.z.lazy(() => {
 var dataFiles4Response = import_zod34.z.lazy(() => {
   return import_zod34.z.object({
     id: import_zod34.z.number().optional(),
-    md5: import_zod34.z.string().optional(),
+    md5: import_zod34.z.string().optional().nullable(),
     mimetype: import_zod34.z.string().optional(),
     name: import_zod34.z.string().optional(),
     s3_path: import_zod34.z.string().optional(),
@@ -2763,7 +2763,7 @@ var dataFiles4Response = import_zod34.z.lazy(() => {
 var dataFiles4Request = import_zod34.z.lazy(() => {
   return import_zod34.z.object({
     id: import_zod34.z.number().optional(),
-    md5: import_zod34.z.string().optional(),
+    md5: import_zod34.z.string().optional().nullable(),
     mimetype: import_zod34.z.string().optional(),
     name: import_zod34.z.string().optional(),
     s3Path: import_zod34.z.string().optional(),
