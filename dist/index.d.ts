@@ -1625,13 +1625,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active: z.ZodOptional<z.ZodBoolean>;
         authId: z.ZodOptional<z.ZodString>;
         availability: z.ZodOptional<z.ZodNumber>;
-        createdAt: z.ZodOptional<z.ZodString>;
+        createdAt: z.ZodNullable<z.ZodOptional<z.ZodString>>;
         downloadFinished: z.ZodOptional<z.ZodBoolean>;
         downloadPresent: z.ZodOptional<z.ZodBoolean>;
         downloadSpeed: z.ZodOptional<z.ZodNumber>;
         downloadState: z.ZodOptional<z.ZodString>;
         eta: z.ZodOptional<z.ZodNumber>;
-        expiresAt: z.ZodOptional<z.ZodString>;
+        expiresAt: z.ZodNullable<z.ZodOptional<z.ZodString>>;
         files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
             id: z.ZodOptional<z.ZodNumber>;
             md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
@@ -1662,7 +1662,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck: z.ZodOptional<z.ZodNumber>;
         name: z.ZodOptional<z.ZodString>;
         progress: z.ZodOptional<z.ZodNumber>;
-        server: z.ZodOptional<z.ZodNumber>;
+        server: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
         size: z.ZodOptional<z.ZodNumber>;
         torrentFile: z.ZodOptional<z.ZodBoolean>;
         updatedAt: z.ZodOptional<z.ZodString>;
@@ -1671,13 +1671,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1692,7 +1692,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -1701,13 +1701,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1722,7 +1722,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -1731,13 +1731,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active: z.ZodOptional<z.ZodBoolean>;
         authId: z.ZodOptional<z.ZodString>;
         availability: z.ZodOptional<z.ZodNumber>;
-        createdAt: z.ZodOptional<z.ZodString>;
+        createdAt: z.ZodNullable<z.ZodOptional<z.ZodString>>;
         downloadFinished: z.ZodOptional<z.ZodBoolean>;
         downloadPresent: z.ZodOptional<z.ZodBoolean>;
         downloadSpeed: z.ZodOptional<z.ZodNumber>;
         downloadState: z.ZodOptional<z.ZodString>;
         eta: z.ZodOptional<z.ZodNumber>;
-        expiresAt: z.ZodOptional<z.ZodString>;
+        expiresAt: z.ZodNullable<z.ZodOptional<z.ZodString>>;
         files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
             id: z.ZodOptional<z.ZodNumber>;
             md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
@@ -1768,7 +1768,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck: z.ZodOptional<z.ZodNumber>;
         name: z.ZodOptional<z.ZodString>;
         progress: z.ZodOptional<z.ZodNumber>;
-        server: z.ZodOptional<z.ZodNumber>;
+        server: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
         size: z.ZodOptional<z.ZodNumber>;
         torrentFile: z.ZodOptional<z.ZodBoolean>;
         updatedAt: z.ZodOptional<z.ZodString>;
@@ -1777,13 +1777,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1798,7 +1798,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -1807,13 +1807,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1828,7 +1828,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -1842,13 +1842,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1863,7 +1863,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -1872,13 +1872,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1893,7 +1893,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -1907,13 +1907,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1928,7 +1928,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -1937,13 +1937,13 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         active?: boolean | undefined;
         authId?: string | undefined;
         availability?: number | undefined;
-        createdAt?: string | undefined;
+        createdAt?: string | null | undefined;
         downloadFinished?: boolean | undefined;
         downloadPresent?: boolean | undefined;
         downloadSpeed?: number | undefined;
         downloadState?: string | undefined;
         eta?: number | undefined;
-        expiresAt?: string | undefined;
+        expiresAt?: string | null | undefined;
         files?: {
             id?: number | undefined;
             md5?: string | null | undefined;
@@ -1958,7 +1958,7 @@ declare const getUsenetListOkResponse: z.ZodLazy<z.ZodObject<{
         inactiveCheck?: number | undefined;
         name?: string | undefined;
         progress?: number | undefined;
-        server?: number | undefined;
+        server?: number | null | undefined;
         size?: number | undefined;
         torrentFile?: boolean | undefined;
         updatedAt?: string | undefined;
@@ -2219,13 +2219,13 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     active: z.ZodOptional<z.ZodBoolean>;
     authId: z.ZodOptional<z.ZodString>;
     availability: z.ZodOptional<z.ZodNumber>;
-    createdAt: z.ZodOptional<z.ZodString>;
+    createdAt: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     downloadFinished: z.ZodOptional<z.ZodBoolean>;
     downloadPresent: z.ZodOptional<z.ZodBoolean>;
     downloadSpeed: z.ZodOptional<z.ZodNumber>;
     downloadState: z.ZodOptional<z.ZodString>;
     eta: z.ZodOptional<z.ZodNumber>;
-    expiresAt: z.ZodOptional<z.ZodString>;
+    expiresAt: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
         id: z.ZodOptional<z.ZodNumber>;
         md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
@@ -2256,7 +2256,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     inactiveCheck: z.ZodOptional<z.ZodNumber>;
     name: z.ZodOptional<z.ZodString>;
     progress: z.ZodOptional<z.ZodNumber>;
-    server: z.ZodOptional<z.ZodNumber>;
+    server: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     size: z.ZodOptional<z.ZodNumber>;
     torrentFile: z.ZodOptional<z.ZodBoolean>;
     updatedAt: z.ZodOptional<z.ZodString>;
@@ -2265,13 +2265,13 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     active?: boolean | undefined;
     authId?: string | undefined;
     availability?: number | undefined;
-    createdAt?: string | undefined;
+    createdAt?: string | null | undefined;
     downloadFinished?: boolean | undefined;
     downloadPresent?: boolean | undefined;
     downloadSpeed?: number | undefined;
     downloadState?: string | undefined;
     eta?: number | undefined;
-    expiresAt?: string | undefined;
+    expiresAt?: string | null | undefined;
     files?: {
         id?: number | undefined;
         md5?: string | null | undefined;
@@ -2286,7 +2286,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     inactiveCheck?: number | undefined;
     name?: string | undefined;
     progress?: number | undefined;
-    server?: number | undefined;
+    server?: number | null | undefined;
     size?: number | undefined;
     torrentFile?: boolean | undefined;
     updatedAt?: string | undefined;
@@ -2295,13 +2295,13 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     active?: boolean | undefined;
     authId?: string | undefined;
     availability?: number | undefined;
-    createdAt?: string | undefined;
+    createdAt?: string | null | undefined;
     downloadFinished?: boolean | undefined;
     downloadPresent?: boolean | undefined;
     downloadSpeed?: number | undefined;
     downloadState?: string | undefined;
     eta?: number | undefined;
-    expiresAt?: string | undefined;
+    expiresAt?: string | null | undefined;
     files?: {
         id?: number | undefined;
         md5?: string | null | undefined;
@@ -2316,7 +2316,7 @@ declare const getUsenetListOkResponseData: z.ZodLazy<z.ZodObject<{
     inactiveCheck?: number | undefined;
     name?: string | undefined;
     progress?: number | undefined;
-    server?: number | undefined;
+    server?: number | null | undefined;
     size?: number | undefined;
     torrentFile?: boolean | undefined;
     updatedAt?: string | undefined;
