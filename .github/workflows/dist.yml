@@ -14,7 +14,7 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Ensure full history for branch switching
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -27,35 +27,27 @@ jobs:
       - name: Run build
         run: npm run build
 
-      - name: Configure git
+      - name: Checkout dist branch
+        uses: actions/checkout@v4
+        with:
+          ref: dist
+          path: dist-branch
+
+      - name: Copy dist to dist branch
         run: |
+          rm -rf dist-branch/dist
+          mkdir -p dist-branch/dist
+          cp -r dist/. dist-branch/dist
+
+      - name: Commit and push changes to dist branch
+        run: |
+          cd dist-branch
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Fetch all branches
-        run: git fetch --all
-
-      - name: Switch to dist branch
-        run: |
-          if git show-ref --verify --quiet refs/heads/dist; then
-            git checkout dist
-          else
-            git checkout --orphan dist
-            git rm -rf .
-          fi
-
-      - name: Copy dist folder
-        run: |
-          git rm -rf . # Remove all files from the dist branch
-          cp -r dist/* . || true
-          cp -r dist/.* . || true # Copy dotfiles (if any), ignore errors
-
-      - name: Commit and push changes
-        run: |
-          git add .
+          git add dist
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "chore(dist): update dist folder [skip ci]"
-            git push origin dist --force
+            git push origin dist
           fi
