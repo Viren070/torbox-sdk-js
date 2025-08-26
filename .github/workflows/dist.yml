@@ -1,0 +1,61 @@
+name: Build and Publish dist
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensure full history for branch switching
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run build
+        run: npm run build
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Switch to dist branch
+        run: |
+          if git show-ref --verify --quiet refs/heads/dist; then
+            git checkout dist
+          else
+            git checkout --orphan dist
+            git rm -rf .
+          fi
+
+      - name: Copy dist folder
+        run: |
+          git rm -rf . # Remove all files from the dist branch
+          cp -r dist/* . || true
+          cp -r dist/.* . || true # Copy dotfiles (if any), ignore errors
+
+      - name: Commit and push changes
+        run: |
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(dist): update dist folder [skip ci]"
+            git push origin dist --force
+          fi
