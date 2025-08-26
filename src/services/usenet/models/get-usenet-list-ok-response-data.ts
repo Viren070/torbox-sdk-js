@@ -127,7 +127,7 @@ export const getUsenetListOkResponseDataRequest = z.lazy(() => {
       downloadSpeed: z.number().optional(),
       downloadState: z.string().optional(),
       eta: z.number().optional(),
-      expiresAt: z.string().optional(),
+      expiresAt: z.string().optional().nullable(),
       files: z.array(dataFiles4Request).optional(),
       hash: z.string().optional(),
       id: z.number().optional(),
