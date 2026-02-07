@@ -17,4 +17,5 @@ export interface GetUsenetListParams {
 export interface GetUsenetCachedAvailabilityParams {
   hash?: string;
   format?: string;
+  listFiles?: string;
 }

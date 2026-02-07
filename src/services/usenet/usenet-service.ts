@@ -324,6 +324,10 @@ Requires an API key using the Authorization Bearer Header.
         key: 'format',
         value: params?.format,
       })
+      .addQueryParam({
+        key: 'list_files',
+        value: params?.listFiles,
+      })
       .build();
     return this.client.call<GetUsenetCachedAvailabilityOkResponse>(request);
   }

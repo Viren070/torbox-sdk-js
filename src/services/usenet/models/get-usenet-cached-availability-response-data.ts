@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { dataFiles4, dataFiles4Request, dataFiles4Response } from './data-files-4';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -8,6 +9,7 @@ export const getUsenetCachedAvailabilityOkResponseData = z.lazy(() => {
     name: z.string().optional(),
     size: z.number().optional(),
     hash: z.string().optional(),
+    files: z.array(dataFiles4).optional()
   });
 });
 
@@ -30,11 +32,13 @@ export const getUsenetCachedAvailabilityOkResponseDataResponse = z.lazy(() => {
       name: z.string().optional(),
       size: z.number().optional(),
       hash: z.string().optional(),
+      files: z.array(dataFiles4Response).optional()
     })
     .transform((data) => ({
       name: data['name'],
       size: data['size'],
       hash: data['hash'],
+      files: data['files']
     }));
 });
 
@@ -48,10 +52,12 @@ export const getUsenetCachedAvailabilityOkResponseDataRequest = z.lazy(() => {
       name: z.string().optional(),
       size: z.number().optional(),
       hash: z.string().optional(),
+      files: z.array(dataFiles4Request).optional()
     })
     .transform((data) => ({
       name: data['name'],
       size: data['size'],
       hash: data['hash'],
+      files: data['files']
     }));
 });
