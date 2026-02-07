@@ -2992,29 +2992,34 @@ var getUsenetCachedAvailabilityOkResponseData = import_zod38.z.lazy(() => {
   return import_zod38.z.object({
     name: import_zod38.z.string().optional(),
     size: import_zod38.z.number().optional(),
-    hash: import_zod38.z.string().optional()
+    hash: import_zod38.z.string().optional(),
+    files: import_zod38.z.array(dataFiles4).optional()
   });
 });
 var getUsenetCachedAvailabilityOkResponseDataResponse = import_zod38.z.lazy(() => {
   return import_zod38.z.object({
     name: import_zod38.z.string().optional(),
     size: import_zod38.z.number().optional(),
-    hash: import_zod38.z.string().optional()
+    hash: import_zod38.z.string().optional(),
+    files: import_zod38.z.array(dataFiles4Response).optional()
   }).transform((data) => ({
     name: data["name"],
     size: data["size"],
-    hash: data["hash"]
+    hash: data["hash"],
+    files: data["files"]
   }));
 });
 var getUsenetCachedAvailabilityOkResponseDataRequest = import_zod38.z.lazy(() => {
   return import_zod38.z.object({
     name: import_zod38.z.string().optional(),
     size: import_zod38.z.number().optional(),
-    hash: import_zod38.z.string().optional()
+    hash: import_zod38.z.string().optional(),
+    files: import_zod38.z.array(dataFiles4Request).optional()
   }).transform((data) => ({
     name: data["name"],
     size: data["size"],
-    hash: data["hash"]
+    hash: data["hash"],
+    files: data["files"]
   }));
 });
 
@@ -3255,6 +3260,9 @@ var UsenetService = class extends BaseService {
     }).addQueryParam({
       key: "format",
       value: params == null ? void 0 : params.format
+    }).addQueryParam({
+      key: "list_files",
+      value: params == null ? void 0 : params.listFiles
     }).build();
     return this.client.call(request);
   }

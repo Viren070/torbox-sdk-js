@@ -1615,6 +1615,7 @@ interface GetUsenetListParams {
 interface GetUsenetCachedAvailabilityParams {
     hash?: string;
     format?: string;
+    listFiles?: string;
 }
 
 /**
@@ -2015,26 +2016,112 @@ declare const getUsenetCachedAvailabilityOkResponse: z.ZodLazy<z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         size: z.ZodOptional<z.ZodNumber>;
         hash: z.ZodOptional<z.ZodString>;
+        files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
+            id: z.ZodOptional<z.ZodNumber>;
+            md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+            mimetype: z.ZodOptional<z.ZodString>;
+            name: z.ZodOptional<z.ZodString>;
+            s3Path: z.ZodOptional<z.ZodString>;
+            shortName: z.ZodOptional<z.ZodString>;
+            size: z.ZodOptional<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }, {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }>>, "many">>;
     }, "strip", z.ZodTypeAny, {
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }, {
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }>>, "many">, z.ZodRecord<z.ZodString, z.ZodLazy<z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         size: z.ZodOptional<z.ZodNumber>;
         hash: z.ZodOptional<z.ZodString>;
+        files: z.ZodOptional<z.ZodArray<z.ZodLazy<z.ZodObject<{
+            id: z.ZodOptional<z.ZodNumber>;
+            md5: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+            mimetype: z.ZodOptional<z.ZodString>;
+            name: z.ZodOptional<z.ZodString>;
+            s3Path: z.ZodOptional<z.ZodString>;
+            shortName: z.ZodOptional<z.ZodString>;
+            size: z.ZodOptional<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }, {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }>>, "many">>;
     }, "strip", z.ZodTypeAny, {
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }, {
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }>>>]>>;
     detail: z.ZodOptional<z.ZodString>;
     error: z.ZodNullable<z.ZodOptional<z.ZodString>>;
@@ -2044,10 +2131,28 @@ declare const getUsenetCachedAvailabilityOkResponse: z.ZodLazy<z.ZodObject<{
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }[] | Record<string, {
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }> | undefined;
     detail?: string | undefined;
     error?: string | null | undefined;
@@ -2057,10 +2162,28 @@ declare const getUsenetCachedAvailabilityOkResponse: z.ZodLazy<z.ZodObject<{
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }[] | Record<string, {
         name?: string | undefined;
         size?: number | undefined;
         hash?: string | undefined;
+        files?: {
+            id?: number | undefined;
+            md5?: string | null | undefined;
+            mimetype?: string | undefined;
+            name?: string | undefined;
+            s3Path?: string | undefined;
+            shortName?: string | undefined;
+            size?: number | undefined;
+        }[] | undefined;
     }> | undefined;
     detail?: string | undefined;
     error?: string | null | undefined;

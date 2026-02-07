@@ -2946,29 +2946,34 @@ var getUsenetCachedAvailabilityOkResponseData = z36.lazy(() => {
   return z36.object({
     name: z36.string().optional(),
     size: z36.number().optional(),
-    hash: z36.string().optional()
+    hash: z36.string().optional(),
+    files: z36.array(dataFiles4).optional()
   });
 });
 var getUsenetCachedAvailabilityOkResponseDataResponse = z36.lazy(() => {
   return z36.object({
     name: z36.string().optional(),
     size: z36.number().optional(),
-    hash: z36.string().optional()
+    hash: z36.string().optional(),
+    files: z36.array(dataFiles4Response).optional()
   }).transform((data) => ({
     name: data["name"],
     size: data["size"],
-    hash: data["hash"]
+    hash: data["hash"],
+    files: data["files"]
   }));
 });
 var getUsenetCachedAvailabilityOkResponseDataRequest = z36.lazy(() => {
   return z36.object({
     name: z36.string().optional(),
     size: z36.number().optional(),
-    hash: z36.string().optional()
+    hash: z36.string().optional(),
+    files: z36.array(dataFiles4Request).optional()
   }).transform((data) => ({
     name: data["name"],
     size: data["size"],
-    hash: data["hash"]
+    hash: data["hash"],
+    files: data["files"]
   }));
 });
 
@@ -3209,6 +3214,9 @@ var UsenetService = class extends BaseService {
     }).addQueryParam({
       key: "format",
       value: params == null ? void 0 : params.format
+    }).addQueryParam({
+      key: "list_files",
+      value: params == null ? void 0 : params.listFiles
     }).build();
     return this.client.call(request);
   }
