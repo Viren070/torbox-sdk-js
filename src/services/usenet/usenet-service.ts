@@ -299,7 +299,7 @@ Requires an API key using the Authorization Bearer Header.
     const request = new RequestBuilder()
       .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
-      .setMethod('GET')
+      .setMethod('POST')
       .setPath('/{api_version}/api/usenet/checkcached')
       .setRequestSchema(z.any())
       .addAccessTokenAuth(this.config.token, 'Bearer')
@@ -316,9 +316,8 @@ Requires an API key using the Authorization Bearer Header.
         key: 'api_version',
         value: apiVersion,
       })
-      .addQueryParam({
-        key: 'hash',
-        value: params?.hash,
+      .addBody({
+        hash: params?.hash,
       })
       .addQueryParam({
         key: 'format',
