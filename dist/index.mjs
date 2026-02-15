@@ -3201,16 +3201,15 @@ var UsenetService = class extends BaseService {
    * @returns {Promise<HttpResponse<GetUsenetCachedAvailabilityOkResponse>>} 
    */
   async getUsenetCachedAvailability(apiVersion, params, requestConfig) {
-    const request = new RequestBuilder().setBaseUrl((requestConfig == null ? void 0 : requestConfig.baseUrl) || this.config.baseUrl || this.config.environment || "https://api.torbox.app" /* DEFAULT */).setConfig(this.config).setMethod("GET").setPath("/{api_version}/api/usenet/checkcached").setRequestSchema(z38.any()).addAccessTokenAuth(this.config.token, "Bearer").setRequestContentType("json" /* Json */).addResponse({
+    const request = new RequestBuilder().setBaseUrl((requestConfig == null ? void 0 : requestConfig.baseUrl) || this.config.baseUrl || this.config.environment || "https://api.torbox.app" /* DEFAULT */).setConfig(this.config).setMethod("POST").setPath("/{api_version}/api/usenet/checkcached").setRequestSchema(z38.any()).addAccessTokenAuth(this.config.token, "Bearer").setRequestContentType("json" /* Json */).addResponse({
       schema: getUsenetCachedAvailabilityOkResponseResponse,
       contentType: "json" /* Json */,
       status: 200
     }).setRetryAttempts(this.config, requestConfig).setRetryDelayMs(this.config, requestConfig).setResponseValidation(this.config, requestConfig).addPathParam({
       key: "api_version",
       value: apiVersion
-    }).addQueryParam({
-      key: "hash",
-      value: params == null ? void 0 : params.hash
+    }).addBody({
+      hash: params == null ? void 0 : params.hash
     }).addQueryParam({
       key: "format",
       value: params == null ? void 0 : params.format
