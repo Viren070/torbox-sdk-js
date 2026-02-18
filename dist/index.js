@@ -3241,7 +3241,7 @@ var UsenetService = class extends BaseService {
   
   Requires an API key using the Authorization Bearer Header.
    * @param {string} apiVersion - 
-   * @param {string} [params.hash] - The list of usenet hashes you want to check. Comma seperated. To find the hash, md5 the link of the usenet link or file.
+   * @param {string[]} [params.hashes] - The list of usenet hashes you want to check. To find the hash, md5 the link of the usenet link or file.
    * @param {string} [params.format] - Format you want the data in. Acceptable is either "object" or "list". List is the most performant option as it doesn't require modification of the list.
    * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<GetUsenetCachedAvailabilityOkResponse>>} 
@@ -3255,7 +3255,7 @@ var UsenetService = class extends BaseService {
       key: "api_version",
       value: apiVersion
     }).addBody({
-      hash: params == null ? void 0 : params.hash
+      hashes: params == null ? void 0 : params.hashes
     }).addQueryParam({
       key: "format",
       value: params == null ? void 0 : params.format
