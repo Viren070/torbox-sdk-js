@@ -3247,7 +3247,7 @@ var UsenetService = class extends BaseService {
    * @returns {Promise<HttpResponse<GetUsenetCachedAvailabilityOkResponse>>} 
    */
   async getUsenetCachedAvailability(apiVersion, params, requestConfig) {
-    const request = new RequestBuilder().setBaseUrl((requestConfig == null ? void 0 : requestConfig.baseUrl) || this.config.baseUrl || this.config.environment || "https://api.torbox.app" /* DEFAULT */).setConfig(this.config).setMethod("POST").setPath("/{api_version}/api/usenet/checkcached").setRequestSchema(import_zod40.z.any()).addAccessTokenAuth(this.config.token, "Bearer").setRequestContentType("json" /* Json */).addResponse({
+    const request = new RequestBuilder().setBaseUrl((requestConfig == null ? void 0 : requestConfig.baseUrl) || this.config.baseUrl || this.config.environment || "https://api.torbox.app" /* DEFAULT */).setConfig(this.config).setMethod("POST").setPath("/{api_version}/api/usenet/checkcached").setRequestSchema(import_zod40.z.any()).addAccessTokenAuth(this.config.token, "Bearer").setRequestContentType("json" /* Json */).addHeaderParam({ key: "Content-Type", value: "application/json" }).addResponse({
       schema: getUsenetCachedAvailabilityOkResponseResponse,
       contentType: "json" /* Json */,
       status: 200
